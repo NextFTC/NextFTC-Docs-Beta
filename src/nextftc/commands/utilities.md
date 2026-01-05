@@ -2,15 +2,22 @@
 
 NextFTC has a bunch of utility commands to help you simplify your code!
 
-## `InstantCommand`
+## Instant Commands
 
 An `InstantCommand` runs a function and ends instantly.
+The `instant` utility function can be used to create an `InstantCommand`.
 
 :::tabs key:code
 == Kotlin
 
 ```kotlin
-InstantCommand {
+instant("name") {
+    // code here
+}
+
+// or 
+
+instant {
     // code here
 }
 ```
@@ -18,9 +25,51 @@ InstantCommand {
 == Java
 
 ```java
-new InstantCommand(() -> {
+instant("name", () -> {
     // code here
 })
+
+// or
+
+instant(() -> {
+    // code here
+});
+```
+
+:::
+
+## Run Commands
+
+A run command is similar to an `InstantCommand`, but it runs continuously until it is interrupted.
+There is no specific `RunCommand` class; 
+instead, the `run` utility function can be used to create a run command.
+
+:::tabs key:code
+
+== Kotlin
+```kotlin
+run("name") {
+    // code here
+} 
+
+// or
+
+run {
+    // code here
+}
+```
+
+== Java
+```java
+run("name", () -> {
+    // code here
+});
+
+// or
+
+run(() -> {
+    // code here
+});
 ```
 
 :::
@@ -44,75 +93,82 @@ new NullCommand(parameter1, parameter2)
 
 :::
 
-## `ForcedParallelCommand`
+## `proxy`
 
-A `ForcedParallelCommand` schedules another command and instantly ends. This can be useful in `SequentialGroups` where you want to start a command and move on.
-
-:::tabs key:code
-== Kotlin
-
-```kotlin
-ForcedParallelCommand(command)
-```
-
-== Java
-
-```java
-new ForcedParallelCommand(command)
-```
-
-:::
-
-Alternatively, you can used the `.forcedParallel()` utility:
-
-:::tabs key:code
-
-== Kotlin
-
-```kotlin
-command.forcedParallel()
-```
-
-== Java
-
-```java
-command.forcedParallel()
-```
-
-:::
-
-## `PerpetualCommand`
-
-A `PerpetualCommand` wraps another command and never finishes unless it is interrupted. It simply ignores the `isDone` condition on the command it wraps.
+A proxy command schedules another command and instantly ends. 
+This can be useful in `SequentialGroups` where you want to start a command and move on.
 
 :::tabs key:code
 == Kotlin
 
 ```kotlin
-PerpetualCommand(commandToWrap)
+proxy(command)
 ```
 
 == Java
 
 ```java
-new PerpetualCommand(commandToWrap)
+proxy(command)
 ```
 
 :::
 
-Alternatively, you can use the `.perpetually()` utility:
+Alternatively, you can used the `.asProxy()` utility:
 
 :::tabs key:code
+
 == Kotlin
 
 ```kotlin
-commandToWrap.perpetually()
+command.asProxy()
 ```
 
 == Java
 
 ```java
-commandToWrap.perpetually()
+command.asProxy()
 ```
 
 :::
+
+## `repeatedly`
+
+The `repeatedly` decorator can be used to create a command that runs until it is interrupted or stopped, 
+repeatedly executing a given block of code.
+
+If `isDone` is true, the command will restart, causing `start` to be called again.
+This will happen infinitely until the command is interrupted,
+or stopped as part of a `ParallelRaceGroup` or `ParallelDeadlineGroup`.
+
+::: tabs key:code
+
+== Kotlin
+```kotlin
+command.repeatedly()
+```
+
+== Java
+```java
+command.repeatedly();
+```
+
+::: 
+
+## `until`
+
+The `until` decorator can be used to create a command that runs until a given condition is true.
+
+::: tabs key:code
+
+== Kotlin
+```kotlin
+command.until { /* condition */ }
+```
+
+== Java
+```java
+command.until(() -> { /* condition */ });
+```
+
+:::
+

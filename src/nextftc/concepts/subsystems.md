@@ -105,6 +105,41 @@ public Command pivotRight = new SetPosition(pivotServo, 0.0).requires(pivotServo
 
 :::
 
+## Subsystem Command Factories
+
+Within a `Subsystem`, you can use the builtin `instant` and `run` functions
+to create commands that automatically require the subsystem. 
+
+:::tabs key:code
+
+== Kotlin
+
+```kotlin
+object MySubsystem : Subsystem {
+    private val motor = MotorEx("motor")
+
+    val stopMotor = instant {
+        motor.power = 0.0
+    } // automatically requires this
+}
+```
+
+== Java
+
+```java
+public class MySubsystem implements Subsystem {
+    public static MySubsystem INSTANCE = new MySubsystem();
+
+    private MotorEx motor = new MotorEx("motor");
+
+    public Command stopMotor = instant(() -> {
+        motor.setPower(0.0);
+    }); // automatically requires this
+}
+```
+
+:::
+
 ## Subsystem Groups
 
 NextFTC provides a `SubsystemGroup` class that can be used to group multiple
