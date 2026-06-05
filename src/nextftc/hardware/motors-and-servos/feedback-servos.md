@@ -1,135 +1,140 @@
 # Feedback Servos
 
-Feedback servos can be one of two types: `FeedbackCRServoEx` or `FeedbackServoEx`. These wrap respectively a `CRServoEx` and a `ServoEx`. They allow you to read the position of the servo from the 4th analog pin. 
+Feedback servos can be one of two types: `NextFeedbackServo` or `NextFeedbackCRServo`. These wrap respectively a `NextServo` and a `NextCRServo`. They allow you to read the position of the servo from the 4th analog pin (e.g. Axon servo).
 
-## FeedbackServoEx
+## NextFeedbackServo
 
-:::tabs key:code 
-
-== Kotlin 
-
-```kotlin
-val servo: FeedbackServoEx = FeedbackServoEx("analog-name", "servo-name", 0.01)
-
-// Alternatively
-val servo: FeedbackServoEx = FeedbackServoEx {
-    cacheTolerance = 0.01, // Or whatever you'd like to use
-    feedbackFactory = { ActiveOpMode.hardwareMap.analogInput.get("analog-name") },
-    servoFactory = { ActiveOpMode.hardwareMap.servo.get("servo-name") }
-}
-
-// Alternatively
-val analogInput: AnalogInput = ActiveOpMode.hardwareMap.analogInput.get("analog-name")
-val servoFactory: Servo = ActiveOpMode.hardwareMap.servo.get("servo-name")
-val servo: FeedbackServoEx = FeedbackServoEx(analogInput, servoFactory, 0.01) // Using cache tolerance = 0.01
-```
-== Java
-```java
-FeedbackServoEx servo = new FeedbackServoEx("analog-name", "servo-name", 0.01);
-
-// Alternatively
-FeedbackServoEx servo = new FeedbackServoEx(
-    0.01, // Or your preferred cache tolerance
-    () -> { ActiveOpMode.hardwareMap().analogInput.get("analog-name") }, 
-    () -> { ActiveOpMode.hardwareMap().servo.get("servo-name") }
-);
-
-// Alternatively
-AnalogInput analogInput = ActiveOpMode.hardwareMap().analogInput.get("analog-name");
-Servo servoFactory = ActiveOpMode.hardwareMap().servo.get("servo-name");
-FeedbackServoEx servo = new FeedbackServoEx(analogInput, servoFactory, 0.01);
-```
-==
-:::
-
-The caching tolerance is the same for any normal `ServoEx` or other implementation.
-
-
-## FeedbackCRServoEx
-
-:::tabs key:code 
-
-== Kotlin 
-
-```kotlin
-val servo: FeedbackCRServoEx = FeedbackCRServoEx("analog-name", "servo-name", 0.01)
-
-// Alternatively
-val servo: FeedbackCRServoEx = FeedbackCRServoEx {
-    cacheTolerance = 0.01, // Or whatever you'd like to use
-    feedbackFactory = { ActiveOpMode.hardwareMap.analogInput.get("analog-name") },
-    servoFactory = { ActiveOpMode.hardwareMap.crservo.get("servo-name") }
-}
-
-// Alternatively
-val analogInput: AnalogInput = ActiveOpMode.hardwareMap.analogInput.get("analog-name")
-val servoFactory: CRServo = ActiveOpMode.hardwareMap.crservo.get("servo-name")
-val servo: FeedbackCRServoEx = FeedbackCRServoEx(analogInput, servoFactory, 0.01) // Using cache tolerance = 0.01
-```
-== Java
-```java
-FeedbackCRServoEx servo = new FeedbackCRServoEx("analog-name", "servo-name", 0.01);
-
-// Alternatively
-FeedbackCRServoEx servo = new FeedbackCRServoEx(
-    0.01, // Or your preferred cache tolerance
-    () -> { ActiveOpMode.hardwareMap().analogInput.get("analog-name") }, 
-    () -> { ActiveOpMode.hardwareMap().crservo.get("servo-name") }
-);
-
-// Alternatively
-AnalogInput analogInput = ActiveOpMode.hardwareMap.analogInput.get("analog-name");
-CRServo servoFactory = ActiveOpMode.hardwareMap.crservo.get("servo-name");
-FeedbackCRServoEx servo = new FeedbackCRServoEx(analogInput, servoFactory, 0.01);
-```
-==
-:::
-
-Same deal as `FeedbackServoEx` with caching.
-
-## Features 
-
-Both `FeedbackCRServoEx` and `FeedbackServoEx` share the same `currentPosition` property This returns the current position of the servo in radians from 0 to 2 pi, and it is an absolute encoder so it will wrap over.
-
-## Example Tracking 
+### Declarations
 
 :::tabs key:code
 
 == Kotlin
 ```kotlin
-var totalAngle:Double = 0.0 // This is your angle of the servo
-var previousAngle:Double = 0.0 // This is the previous loop's servo position
+NextFeedbackServo("servo_name", "feedback_name")
 
-fun updatePosition() {
-	val currentAngle = servo.currentPosition
-	var deltaAngle = currentAngle - previousAngle
+// For direct hardware access
+NextFeedbackServo(module, port, "feedback_name")
+```
 
-	if(deltaAngle > Math.PI) deltaAngle -= 2 * Math.PI
-	else if (deltaAngle < -Math.PI) deltaAngle += 2 * Math.PI
+== Java
+```java
+new NextFeedbackServo("servo_name", "feedback_name");
 
-	totalAngle += deltaAngle
-	previousAngle = currentAngle 
+// For direct hardware access
+new NextFeedbackServo(module, port, "feedback_name");
+```
+
+:::
+
+With cache tolerance (default 0.01):
+
+:::tabs key:code
+
+== Kotlin
+```kotlin
+NextFeedbackServo("servo_name", "feedback_name", cacheTolerance)
+NextFeedbackServo(module, port, "feedback_name", cacheTolerance)
+```
+
+== Java
+```java
+new NextFeedbackServo("servo_name", "feedback_name", cacheTolerance);
+new NextFeedbackServo(module, port, "feedback_name", cacheTolerance);
+```
+
+:::
+
+## NextFeedbackCRServo
+
+### Declarations
+
+:::tabs key:code
+
+== Kotlin
+```kotlin
+NextFeedbackCRServo("servo_name", "feedback_name")
+
+// For direct hardware access
+NextFeedbackCRServo(module, port, "feedback_name")
+```
+
+== Java
+```java
+new NextFeedbackCRServo("servo_name", "feedback_name");
+
+// For direct hardware access
+new NextFeedbackCRServo(module, port, "feedback_name");
+```
+
+:::
+
+With cache tolerance (default 0.01):
+
+:::tabs key:code
+
+== Kotlin
+```kotlin
+NextFeedbackCRServo("servo_name", "feedback_name", cacheTolerance)
+NextFeedbackCRServo(module, port, "feedback_name", cacheTolerance)
+```
+
+== Java
+```java
+new NextFeedbackCRServo("servo_name", "feedback_name", cacheTolerance);
+new NextFeedbackCRServo(module, port, "feedback_name", cacheTolerance);
+```
+
+:::
+### Features
+
+Both `NextFeedbackServo` and `NextFeedbackCRServo` contain the variable `angle` which returns the physical angle as a typed `Angle` in radians:
+
+:::tabs key:code
+
+== Kotlin
+```kotlin
+val current: Angle = servo.angle
+```
+
+== Java
+```java
+Angle current = servo.getAngle();
+```
+
+
+:::
+
+## Example Tracking
+:::tabs key:code
+
+== Kotlin
+```kotlin
+var totalAngle = 0.0
+var previousAngle = 0.0
+
+fun updateAngle() {
+    val current = crServo.angle.rawValue
+    var delta = current - previousAngle
+    if (delta > Math.PI) delta -= 2 * Math.PI
+    else if (delta < -Math.PI) delta += 2 * Math.PI
+    totalAngle += delta
+    previousAngle = current
 }
 ```
 
 == Java
-
 ```java
-double totalAngle = 0.0; // This is your angle of the servo
-double previousAngle = 0.0; // This is the previous loop's servo position
+double totalAngle = 0.0;
+double previousAngle = 0.0;
 
-void updatePosition() {
-	double currentAngle = servo.getCurrentPosition();
-	double deltaAngle = currentAngle - previousAngle;
-
-	if (deltaAngle > Math.PI) deltaAngle -= 2 * Math.PI;
-	else if (deltaAngle < -Math.PI) deltaAngle += 2 * Math.PI;
-
-	totalAngle += deltaAngle;
-	previousAngle = currentAngle;
+void updateAngle() {
+    double current = crServo.getAngle().getRawValue();
+    double delta = current - previousAngle;
+    if (delta > Math.PI) delta -= 2 * Math.PI;
+    else if (delta < -Math.PI) delta += 2 * Math.PI;
+    totalAngle += delta;
+    previousAngle = current;
 }
 ```
-==
-:::
 
-This code would result in the tracked position of the servo (beyond 0 to 2 pi). This is incredibly useful for `FeedbackCRServoEx`. However be warned that the analog wrap may cause issues, but this is merely an example.
+:::

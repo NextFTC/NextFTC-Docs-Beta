@@ -1,79 +1,96 @@
 # Continuous Rotation Servos
 
-`CRServoEx` wraps a `CRServo` exactly like a `ServoEx` wraps a `Servo` but implements `Powerable` instead of `Positionable`. 
+`NextCRServo` wraps a `CRServoImplEx` exactly like a `NextServo` wraps a `ServoImplEx` but implements `Powerable` instead of `Positionable`.
 
 ## Declarations
 
-You can declare `CRServoEx` in the following manner, much like a normal `ServoEx`:
+You can declare `NextCRServo` in the following manner, much like a normal `NextServo`:
 
 :::tabs key:code
 
 == Kotlin
-
 ```kotlin
-val crServoEx: CRServoEx = CRServoEx("cr_servo_name")
+val crServo = NextCRServo("cr_servo_name")
 
 // Alternatively 
-val crServoEx: CRServoEx = CRServoEx { crServo }
+val crServo = NextCRServo { crServoImplEx }
 
-// Alternatively
-val crServoEx: CRServoEx = CRServoEx(crServo)
+// For direct hardware access
+val crServo = NextCRServo(module, port)
 
 ```
 
 == Java
 ```java
-CRServoEx crServoEx = new CRServoEx("cr_servo_name");
+NextCRServo crServo = new NextCRServo("cr_servo_name");
 
 // Alternatively
-CRServoEx crServoEx = new CRServoEx(() -> crServo);
+NextCRServo crServo = new NextCRServo(() -> crServoImplEx);
 
-// Alternatively
-CRServoEx crServoEx = new CRServoEx(crServo);
+// For direct hardware access
+NextCRServo crServo = new NextCRServo(module, port);
 
 ```
 
-::: 
+:::
 
-Additionally you can pass a cache tolerance (default is 0.01), exactly like a normal servo. 
+Additionally you can pass a cache tolerance (default is 0.01), exactly like a normal servo.
 
 :::tabs key:code
 
 == Kotlin
 ```kotlin
-var crServoEx = CRServoEx("cr_servo_name", cacheTolerance)
-var crServoEx = CRServoEx(cacheTolerance) { crServo }
-var crServoEx = CRServoEx(crServo, cacheTolerance)
+val  crServo = NextCRServo("cr_servo_name", cacheTolerance)
+val  crServo = NextCRServo(cacheTolerance, { crServoImplEx  })
+val  crServo = NextCRServo(module, port, cacheTolerance)
 ```
 == Java
 ```java
-CRServoEx crServoEx = new CRServoEx("cr_servo_name", cacheTolerance);
-CRServoEx crServoEx = new CRServoEx(cacheTolerance, () -> crServo);
-CRServoEx crServoEx = new CRServoEx(crServo, cacheTolerance);
+NextCRServo crServo = new NextCRServo("cr_servo_name", cacheTolerance);
+NextCRServo crServo = new NextCRServo(cacheTolerance, () -> crServoImplEx);
+NextCRServo crServo = new NextCRServo(module, port, cacheTolerance);
 ```
 :::
 
 ## Usage
 
-`CRServoEx` has only a `power` property to set or get the power of the motor. Like a `MotorEx` the power can vary from -1 to 1. 
+`NextCRServo` has only a `power` property to set or get the power of the motor. Like a `MotorEx` the power can vary from -1 to 1.
 
 :::tabs key:code
 
 == Kotlin
 
 ```kotlin
-crServoEx.power = 0.0 // To turn off
-crServoEx.power = -1.0 // To spin in reverse fully
-crServoEx.power = 0.5 // To spin forward partially
+crServo.power = 0.0 // To turn off
+crServo.power = -1.0 // To spin in reverse fully
+crServo.power = 0.5 // To spin forward half speed
 ```
 
 == Java
 
 ```java
-crServoEx.setPower(0.0); // To turn off
-crServoEx.setPower(-1.0); // To spin in reverse fully
-crServoEx.setPower(0.5); // To spin forward partially
+crServo.setPower(0.0);  // To turn off
+crServo.setPower(-1.0); // To spin in reverse fully
+crServo.setPower(0.5);  // To spin forward half speed
 ```
 
 :::
 
+### PWM Control
+Controls whether the servo is actively receiving power or not.
+
+:::tabs key:code
+
+== Kotlin
+```kotlin
+crServo.enable()   // enable PWM output
+crServo.disable()  // disable PWM output
+```
+
+== Java
+```java
+crServo.enable();   // enable PWM output
+crServo.disable();  // disable PWM output
+```
+
+:::
