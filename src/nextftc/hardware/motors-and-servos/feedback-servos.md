@@ -10,18 +10,18 @@ Feedback servos can be one of two types: `NextFeedbackServo` or `NextFeedbackCRS
 
 == Kotlin
 ```kotlin
-NextFeedbackServo("servo_name", "feedback_name")
+val servo = NextFeedbackServo("servo_name", "feedback_name")
 
 // For direct hardware access
-NextFeedbackServo(module, port, "feedback_name")
+val servo = NextFeedbackServo(module, port, "feedback_name")
 ```
 
 == Java
 ```java
-new NextFeedbackServo("servo_name", "feedback_name");
+NextFeedbackServo servo = new NextFeedbackServo("servo_name", "feedback_name");
 
 // For direct hardware access
-new NextFeedbackServo(module, port, "feedback_name");
+NextFeedbackServo servo = new NextFeedbackServo(module, port, "feedback_name");
 ```
 
 :::
@@ -32,14 +32,14 @@ With cache tolerance (default 0.01):
 
 == Kotlin
 ```kotlin
-NextFeedbackServo("servo_name", "feedback_name", cacheTolerance)
-NextFeedbackServo(module, port, "feedback_name", cacheTolerance)
+val servo = NextFeedbackServo("servo_name", "feedback_name", cacheTolerance)
+val servo = NextFeedbackServo(module, port, "feedback_name", cacheTolerance)
 ```
 
 == Java
 ```java
-new NextFeedbackServo("servo_name", "feedback_name", cacheTolerance);
-new NextFeedbackServo(module, port, "feedback_name", cacheTolerance);
+NextFeedbackServo servo = new NextFeedbackServo("servo_name", "feedback_name", cacheTolerance);
+NextFeedbackServo servo = new NextFeedbackServo(module, port, "feedback_name", cacheTolerance);
 ```
 
 :::
@@ -52,18 +52,18 @@ new NextFeedbackServo(module, port, "feedback_name", cacheTolerance);
 
 == Kotlin
 ```kotlin
-NextFeedbackCRServo("servo_name", "feedback_name")
+val servo = NextFeedbackCRServo("servo_name", "feedback_name")
 
 // For direct hardware access
-NextFeedbackCRServo(module, port, "feedback_name")
+val servo = NextFeedbackCRServo(module, port, "feedback_name")
 ```
 
 == Java
 ```java
-new NextFeedbackCRServo("servo_name", "feedback_name");
+NextFeedbackServo servo = new NextFeedbackCRServo("servo_name", "feedback_name");
 
 // For direct hardware access
-new NextFeedbackCRServo(module, port, "feedback_name");
+NextFeedbackServo servo = new NextFeedbackCRServo(module, port, "feedback_name");
 ```
 
 :::
@@ -74,14 +74,14 @@ With cache tolerance (default 0.01):
 
 == Kotlin
 ```kotlin
-NextFeedbackCRServo("servo_name", "feedback_name", cacheTolerance)
-NextFeedbackCRServo(module, port, "feedback_name", cacheTolerance)
+val servo = NextFeedbackCRServo("servo_name", "feedback_name", cacheTolerance)
+val servo = NextFeedbackCRServo(module, port, "feedback_name", cacheTolerance)
 ```
 
 == Java
 ```java
-new NextFeedbackCRServo("servo_name", "feedback_name", cacheTolerance);
-new NextFeedbackCRServo(module, port, "feedback_name", cacheTolerance);
+NextFeedbackServo servo = new NextFeedbackCRServo("servo_name", "feedback_name", cacheTolerance);
+NextFeedbackServo servo = new NextFeedbackCRServo(module, port, "feedback_name", cacheTolerance);
 ```
 
 :::
@@ -112,11 +112,11 @@ This code would result in the tracked position of the servo (beyond 0 to 2 pi). 
 
 == Kotlin
 ```kotlin
-var totalAngle = 0.0
-var previousAngle = 0.0
+var totalAngle = 0.0 // This is your angle of the servo
+var previousAngle = 0.0 // This is the previous loop's servo position
 
 fun updateAngle() {
-    val current = crServo.angle.rawValue
+    val current = crServo.angle
     var delta = current - previousAngle
     if (delta > Math.PI) delta -= 2 * Math.PI
     else if (delta < -Math.PI) delta += 2 * Math.PI
@@ -127,11 +127,11 @@ fun updateAngle() {
 
 == Java
 ```java
-double totalAngle = 0.0;
-double previousAngle = 0.0;
+double totalAngle = 0.0; // This is your angle of the servo
+double previousAngle = 0.0; // This is the previous loop's servo position
 
 void updateAngle() {
-    double current = crServo.getAngle().getRawValue();
+    double current = crServo.getAngle();
     double delta = current - previousAngle;
     if (delta > Math.PI) delta -= 2 * Math.PI;
     else if (delta < -Math.PI) delta += 2 * Math.PI;

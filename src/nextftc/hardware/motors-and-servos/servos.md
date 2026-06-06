@@ -8,25 +8,25 @@ wraps a `ServoImplEx` and implements `Positionable`.
 == Kotlin
 
 ```kotlin
-NextServo("servo_name")
+val servo = NextServo("servo_name")
 
 //Alternatively
-NextServo { servo }
+val servo = NextServo { servo }
 
 // For direct hardware access
-NextServo(module, port)
+val servo = NextServo(module, port)
 ```
 
 == Java
 
 ```java
-new NextServo("servo_name");
+NextServo servo = new NextServo("servo_name");
 
 //Alternatively
-new NextServo(() -> servo);
+NextServo servo = new NextServo(() -> servo);
 
 // For direct hardware access
-new NextServo(module, port);
+NextServo servo = new NextServo(module, port);
 ```
 
 :::
@@ -38,17 +38,17 @@ Additionally, you can pass a position caching tolerance (defaults to 0.01):
 == Kotlin
 
 ```kotlin
-NextServo("servo_name", cacheTolerance)
-NextServo(cacheTolerance, { servo })
-NextServo(module, port, cacheTolerance)
+val servo = NextServo("servo_name", cacheTolerance)
+val servo = NextServo(cacheTolerance, { servo })
+val servo = NextServo(module, port, cacheTolerance)
 ```
 
 == Java
 
 ```java
-new NextServo("servo_name", cacheTolerance);
-new NextServo(cacheTolerance, () -> servo);
-new NextServo(module, port, cacheTolerance);
+NextServo servo = new NextServo("servo_name", cacheTolerance);
+NextServo servo = new NextServo(cacheTolerance, () -> servo);
+NextServo servo = new NextServo(module, port, cacheTolerance);
 ```
 
 :::
