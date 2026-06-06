@@ -138,7 +138,12 @@ export default [
                     {
                         text: "Limelight",
                         link: "/nextftc/hardware/sensors-and-webcams/limelight"
+                    },
+                    {
+                        text: "HuskyLens",
+                        link: "/nextftc/hardware/sensors-and-webcams/husky-lens"
                     }
+
 
                 ]
             }
