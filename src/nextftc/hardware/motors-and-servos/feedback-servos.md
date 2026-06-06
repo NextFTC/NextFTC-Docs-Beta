@@ -105,6 +105,9 @@ Angle current = servo.getAngle();
 :::
 
 ## Example Tracking
+This code would result in the tracked position of the servo (beyond 0 to 2 pi). This is incredibly useful for `NextCRServo`. However be warned that the analog wrap may cause issues, but this is merely an example.
+
+
 :::tabs key:code
 
 == Kotlin
