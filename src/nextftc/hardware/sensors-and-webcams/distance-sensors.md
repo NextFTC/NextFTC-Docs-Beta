@@ -35,6 +35,7 @@ override fun periodic() {
     if (sensor.isWithinDistance(2.0, DistanceUnit.INCH)) { ... }
 }
 ```
+`sensor.isWithinDistance(2.0)` returns true if the distance is within 2 cm, if a unit is specified, it will use that unit.
 
 == Java
 ```java
@@ -50,5 +51,6 @@ public void periodic() {
 }
 ```
 `sensor.isWithinDistance(2.0)` returns true if the distance is within 2 cm, if a unit is specified, it will use that unit.
-Any distance features will use centimeters by default
 :::
+
+Any distance features will use centimeters by default

@@ -125,16 +125,21 @@ export default [
                 items: [
                     {
                         text: "Color Sensors",
-                        link: "/nextftc/hardware/sensors/color-sensors"
+                        link: "/nextftc/hardware/sensors-and-webcams/color-sensors"
                     },
                     {
                         text: "Distance Sensors",
-                        link: "/nextftc/hardware/sensors/distance-sensors"
+                        link: "/nextftc/hardware/sensors-and-webcams/distance-sensors"
                     },
                     {
                         text: "Digital Sensors",
-                        link: "/nextftc/hardware/sensors/digital-sensors"
+                        link: "/nextftc/hardware/sensors-and-webcams/digital-sensors"
+                    },
+                    {
+                        text: "Limelight",
+                        link: "/nextftc/hardware/sensors-and-webcams/limelight"
                     }
+
                 ]
             }
         ]

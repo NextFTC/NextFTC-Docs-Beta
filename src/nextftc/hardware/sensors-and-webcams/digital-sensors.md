@@ -7,7 +7,7 @@ and beam breaks.
 ## Declarations
 Most digital sensors are "active low" which means they read `false` 
 when triggered and `true` when idle. `NextDigitalSensor` handles this inversion automatically, 
-though it can be reverted if needed. Check your specific sensor specs for more info on it.
+though it can be reverted if needed. Check your sensors documentation for more info on it.
 
 
 :::tabs key:code
@@ -16,7 +16,7 @@ though it can be reverted if needed. Check your specific sensor specs for more i
 ```kotlin
 val sensor = NextDigitalSensor("sensor_name")
 
-// Not inverted means active true
+// Not inverted (active high)
 val sensor = NextDigitalSensor("sensor_name", inverted = false)
 ```
 
@@ -24,14 +24,14 @@ val sensor = NextDigitalSensor("sensor_name", inverted = false)
 ```java
 NextDigitalSensor sensor = new NextDigitalSensor("sensor_name");
 
-// Not inverted
+// Not inverted (active high)
 NextDigitalSensor sensor = new NextDigitalSensor("sensor_name", false);
 ```
 
 :::
 
 ## Usage
-`isTriggered` returns true when the sensor is activated, and `rawState` returns the raw state of the sensor
+`isTriggered` returns `true` when the sensor is activated, and `rawState` returns the raw state of the sensor
 (raw state does not account for inversion).
 
 :::tabs key:code
@@ -55,8 +55,7 @@ boolean raw = sensor.getRawState();
 :::
 
 ### Debug
-Use `debug()` in telemetry to see the current triggered state, raw state, and whether inversion is enabled. 
-This is useful for verifying your sensor is wired and configured correctly.
+Use `debug()` in telemetry to see the current triggered state, raw state, and whether inversion is `true`. 
 
 
 :::tabs key:code

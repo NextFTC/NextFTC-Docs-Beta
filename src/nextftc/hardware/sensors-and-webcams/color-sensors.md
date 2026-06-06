@@ -1,6 +1,6 @@
 # Color Sensor
 
-`NextColorDistanceSensor` wraps a `NormalizedColorSensor` and an optional `DistanceSensor` to allow for color and distance readings; with the ability to use color matching in different color spaces.
+`NextColorDistanceSensor` wraps a `NormalizedColorSensor` and an optional `DistanceSensor` providing color and distance readings with support for color matching in multiple color spaces.
 
 ## Declarations
 
@@ -53,6 +53,7 @@ public void periodic() {
 ## ColorProfile
 `ColorProfile` defines a target color and tolerances for that target color. HSV is recommended because it is more stable under different lighting conditions, however RGB is also supported.
 
+
 :::tabs key:code
 
 == Kotlin
@@ -68,6 +69,7 @@ override fun periodic() {
     if (sensor.isColor(green)) { ... } 
 }
 ```
+In this example, `.isColor(green)` returns true if the detected color falls within the target color's tolerance and false otherwise.
 
 == Java
 ```java
@@ -83,8 +85,11 @@ public void periodic() {
     if (sensor.isColor(green)) { ... }
 }
 ```
-In this example, `.isColor(green)` returns true if the detected color falls within the target color's tolerance and false otherwise. You can use `debug()` to calibrate a target color and determine appropriate tolerance values.
+In this example, `.isColor(green)` returns true if the detected color falls within the target color's tolerance and false otherwise. 
 :::
+
+You can use [`debug()`](./color-sensors.md#debug) to calibrate a target color and determine appropriate tolerance values.
+
 
 ### Color and Distance Features
 
@@ -103,6 +108,7 @@ val isCloseToGreen = sensor.isColorWithinDistance(green, 4.0)
 // Checks if the reading is within the tolerance of green and the object is within 2 inches
 val isCloseToGreenInches = sensor.isColorWithinDistance(green, 2.0, DistanceUnit.INCH)
 ```
+Any distance features will use centimeters by default
 
 == Java
 ```java
