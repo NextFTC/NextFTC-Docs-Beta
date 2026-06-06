@@ -50,34 +50,8 @@ public void periodic() {
 :::
 
 
-### Distance
-
-See [Distance Sensor](./distance-sensors.md#usage) for usage — `NextColorDistanceSensor` exposes the same methods.
-
-
-### Debug
-
-You can use `debug()` in telemetry to calibrate a `ColorProfile`:
-
-:::tabs key:code
-
-== Kotlin
-```kotlin
-// Outputs: RGB=(r,g,b) HSV=(h,s,v) Dist=d
-telemetry.addLine(sensor.debug())
-```
-
-== Java
-```java
-// Outputs: RGB=(r,g,b) HSV=(h,s,v) Dist=d
-telemetry.addLine(sensor.debug());
-```
-
-:::
-
 ## ColorProfile
-
-`ColorProfile` describes a target color and per-channel tolerances. HSV is recommended as it is more stable under different lighting conditions.
+`ColorProfile` defines a target color and tolerances for that target color. HSV is recommended because it is more stable under different lighting conditions, however RGB is also supported.
 
 :::tabs key:code
 
@@ -109,5 +83,59 @@ public void periodic() {
     if (sensor.isColor(green)) { ... }
 }
 ```
+In this example, `.isColor(green)` returns true if the detected color falls within the target color's tolerance and false otherwise. You can use `debug()` to calibrate a target color and determine appropriate tolerance values.
+:::
+
+### Color and Distance Features
+
+See [Distance Sensor](./distance-sensors.md#usage) for usage of distance methods, `NextColorDistanceSensor` exposes the same methods.
+
+:::tabs key:code
+
+== Kotlin
+```kotlin
+// Checks if the reading is within the tolerance of green
+val isGreen = sensor.isColor(green)
+
+// Checks if the reading is within the tolerance of green and the object is within 4 cm
+val isCloseToGreen = sensor.isColorWithinDistance(green, 4.0)
+
+// Checks if the reading is within the tolerance of green and the object is within 2 inches
+val isCloseToGreenInches = sensor.isColorWithinDistance(green, 2.0, DistanceUnit.INCH)
+```
+
+== Java
+```java
+// Checks if the reading is within the tolerance of green
+boolean isGreen = sensor.isColor(green);
+
+// Checks if the reading is within the tolerance of green and the object is within 4 cm
+boolean isCloseToGreen = sensor.isColorWithinDistance(green, 4.0);
+
+// Checks if the reading is within the tolerance of green and the object is within 2 inches
+boolean isCloseToGreenInches = sensor.isColorWithinDistance(green, 2.0, DistanceUnit.INCH);
+```
+
+Any distance features will use centimeters by default
+:::
+
+### Debug
+
+You can use `debug()` in telemetry to calibrate a `ColorProfile`:
+
+:::tabs key:code
+
+== Kotlin
+```kotlin
+// Outputs: RGB=(r,g,b) HSV=(h,s,v) Dist=d
+telemetry.addLine(sensor.debug())
+```
+
+== Java
+```java
+// Outputs: RGB=(r,g,b) HSV=(h,s,v) Dist=d
+telemetry.addLine(sensor.debug());
+```
 
 :::
+

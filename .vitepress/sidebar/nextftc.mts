@@ -119,6 +119,23 @@ export default [
                         link: "/nextftc/hardware/motor-and-servo-commands/runtostate"
                     }
                 ]
+            },
+            {
+                text: "Sensors and Webcams",
+                items: [
+                    {
+                        text: "Color Sensors",
+                        link: "/nextftc/hardware/sensors/color-sensors"
+                    },
+                    {
+                        text: "Distance Sensors",
+                        link: "/nextftc/hardware/sensors/distance-sensors"
+                    },
+                    {
+                        text: "Digital Sensors",
+                        link: "/nextftc/hardware/sensors/digital-sensors"
+                    }
+                ]
             }
         ]
     }] satisfies SidebarItem[]
