@@ -1,23 +1,23 @@
 # Introduction
 
-NextFTC has a few motor and servo wrappers to make your life easier. There
-are three interfaces:
+## Hardware
+NextFTC provides wrappers for common FTC hardware devices, including motors, servos, sensors, etc.
 
-1. `Powerable` has a power that can be get and set.
-2. `Positionable` has a position that can be get and set. The position in a
-   `Positionable` can be directly set (e.g., the target position), like in a
-   servo.
-3. `Controllable`, which extends `Powerable`, has a current position and
-   velocity.
+These wrappers are designed to be easier to use than the raw FTC SDK. 
+Hardware devices are lazily initialized, this mean they can be constructed before the OpMode is initialized. 
+Writes are also cached to prevent unnecessary hardware calls.
 
-The interfaces, along with the commands, are in the `hardware` module. The
-implementations are in the `ftc` module, which has a compile-only
-dependency on the `hardware` module.
+### Motor and Servos
+- [Servos](./motors-and-servos/servos.md)
+- [Continuous Rotation Servos](./motors-and-servos/cr-servos.md)
+- [Feedback Servos](./motors-and-servos/feedback-servos.md)
+- [Motors](./motors-and-servos/motors.md)
 
-All implementations, such as `MotorEx` and `ServoEx`, take a supplier
-that is lazily evaluated instead of directly taking the hardware to wrap. This
-allows you to construct it on construction of your OpMode/subsystem instead
-of waiting until init.
+### Sensors
+- [Color Sensor](./sensors-and-webcams/color-sensors.md)
+- [Distance Sensor](./sensors-and-webcams/distance-sensosr.md)
+- [Digital Sensor](./sensors-and-webcams/digital-sensors.md)
 
-Additionally, all implementations implement caching on all writes with a
-configurable cache tolerance that defaults to 0.01.
+### Webcams
+- [Limelight](./sensors-and-webcams/limelight.md)
+- [HuskyLens](./sensors-and-webcams/huskylens.md)
