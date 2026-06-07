@@ -3,9 +3,10 @@
 ## Hardware
 NextFTC provides wrappers for common FTC hardware devices, including motors, servos, sensors, etc.
 
-These wrappers are designed to be easier to use than the raw FTC SDK. 
-Hardware devices are lazily initialized, this mean they can be constructed before the OpMode is initialized. 
-Writes are also cached to prevent unnecessary hardware calls.
+These wrappers are designed to be easier to use and include several built-in features.
+Hardware devices are lazily initialized; this mean they can be constructed before the OpMode is even initialized.
+Writes are also cached to prevent unnecessary hardware calls with a default value of 0.01.
+Simply, this means updates are only sent when the value changes by more than 0.01 or your desired value.
 
 ### Motor and Servos
 - [Servos](./motors-and-servos/servos.md)
