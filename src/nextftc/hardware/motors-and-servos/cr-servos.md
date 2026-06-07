@@ -1,6 +1,6 @@
 # Continuous Rotation Servos
 
-`NextCRServo` wraps a `CRServoImplEx` exactly like a `NextServo` wraps a `ServoImplEx` but implements `Powerable` instead of `Positionable`.
+`NextCRServo` wraps a `CRServoImplEx` exactly like a `NextServo` wraps a `ServoImplEx`, though you will be setting a power not a position.
 
 ## Declarations
 

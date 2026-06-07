@@ -1,7 +1,7 @@
 # Servos
 
 To control your servos, you can use NextFTC's `NextServo` class. A `NextServo`
-wraps a `ServoImplEx` and implements `Positionable`.
+wraps a `ServoImplEx`.
 
 :::tabs key:code
 

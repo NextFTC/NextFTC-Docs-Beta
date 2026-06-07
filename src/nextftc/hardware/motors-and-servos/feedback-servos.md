@@ -1,6 +1,6 @@
 # Feedback Servos
 
-Feedback servos can be one of two types: `NextFeedbackServo` or `NextFeedbackCRServo`. These wrap respectively a `NextServo` and a `NextCRServo`. They allow you to read the position of the servo from the 4th analog pin (e.g. Axon servo).
+Feedback servos can be one of two types: `NextFeedbackServo` or `NextFeedbackCRServo`. These wrap respectively a `NextServo` and a `NextCRServo`. They allow you to read the position of the servo from the 4th analog wire from servos (e.g. Axon servo).
 
 ## NextFeedbackServo
 
@@ -87,7 +87,7 @@ NextFeedbackServo servo = new NextFeedbackCRServo(module, port, "feedback_name",
 :::
 ### Features
 
-Both `NextFeedbackServo` and `NextFeedbackCRServo` contain the variable `angle` which returns the physical angle as a typed `Angle` in radians:
+Both `NextFeedbackServo` and `NextFeedbackCRServo` contain the variable `angle` which returns the physical angle as a typed [`Angle`](../../concepts/units.md#angle) in radians:
 
 :::tabs key:code
 
