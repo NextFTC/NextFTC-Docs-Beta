@@ -52,9 +52,25 @@ NextCRServo crServo = new NextCRServo(module, port, cacheTolerance);
 ```
 :::
 
+For reversing the servo 
+
+:::tabs key:code
+
+== Kotlin
+```kotlin
+val crServo = NextCRServo("cr_servo_name").reverse()
+```
+
+== Java
+```java
+NextCRServo crServo = new NextCRServo("cr_servo_name").reverse();
+```
+
+:::
+
 ## Usage
 
-`NextCRServo` has only a `power` property to set or get the power of the motor. Like a `MotorEx` the power can vary from -1 to 1.
+`NextCRServo` has only a `power` property to set or get the power of the motor. Like a `NextMotor` the power can vary from -1 to 1.
 
 :::tabs key:code
 
