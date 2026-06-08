@@ -100,6 +100,10 @@ export default [
                     {
                         text: "Servos with Feedback",
                         link: "/nextftc/hardware/motors-and-servos/feedback-servos"
+                    },
+                    {
+                        text: "RGB Headlight",
+                        link: "/nextftc/hardware/motors-and-servos/rgb-headlight"
                     }
                 ]
             },

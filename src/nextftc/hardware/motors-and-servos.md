@@ -9,10 +9,11 @@ Writes are also cached to prevent unnecessary hardware calls with a default valu
 Simply, this means updates are only sent when the value changes by more than 0.01 or your desired value.
 
 ### Motor and Servos
+- [Motors](./motors-and-servos/motors.md)
 - [Servos](./motors-and-servos/servos.md)
 - [Continuous Rotation Servos](./motors-and-servos/cr-servos.md)
 - [Feedback Servos](./motors-and-servos/feedback-servos.md)
-- [Motors](./motors-and-servos/motors.md)
+- [RGB Headlight](motors-and-servos/rgb-headlight.md)
 
 ### Sensors
 - [Color Sensor](./sensors-and-webcams/color-sensors.md)
