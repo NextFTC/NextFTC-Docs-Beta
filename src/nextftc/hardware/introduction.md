@@ -6,7 +6,7 @@ NextFTC provides wrappers for common FTC hardware devices, including motors, ser
 These wrappers are designed to be easier to use and include several built-in features.
 Hardware devices are lazily initialized; this mean they can be constructed before the OpMode is even initialized.
 Writes are also cached to prevent unnecessary hardware calls with a default value of 0.01.
-Simply, this means updates are only sent when the value changes by more than 0.01 or your desired value.
+Basically, this means updates are only sent when the writes value changes by more than 0.01 or your desired tolerance.
 
 ### Motor and Servos
 - [Motors](./motors-and-servos/motors.md)

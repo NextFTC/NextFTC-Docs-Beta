@@ -83,7 +83,7 @@ export default [
                 items: [
                     {
                         text: "Introduction",
-                        link: "/nextftc/hardware/motors-and-servos"
+                        link: "/nextftc/hardware/introduction"
                     },
                     {
                         text: "Motors",
