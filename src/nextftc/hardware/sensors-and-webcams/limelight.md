@@ -45,44 +45,52 @@ limelight.stop();
 
 ### Distance
 
-Returns the straight-line distance (hypotenuse) to an AprilTag.
+Returns the straight-line distance (hypotenuse) to an AprilTag as a [Distance](/nextftc/concepts/units.md) or `null` if no valid tag is available.
 If no unit is specified, inches are used by default.
 
 :::tabs key:code
 
 == Kotlin
 ```kotlin
-val dist = limelight.getDistance() // default: inches
-val cm = limelight.getDistance(DistanceUnit.CM)
-val inches = limelight.getDistance(id = 20) // specific tag, inches
-val cm3 = limelight.getDistance(DistanceUnit.CM, id = 3) 
+val dist = limelight.getDistance() ?: return // default: inches
+val cm = limelight.getDistance(Centimeters) ?: return
+val ft20 = limelight.getDistance(Feet, id = 20) ?: return // tag 20, and in Ft
 ```
 
 == Java
 ```java
-double dist = limelight.getDistance(); // default: inches
-double cm = limelight.getDistance(DistanceUnit.CM);
-double inches = limelight.getDistance(DistanceUnit.CM, 20); // specific tag, and in CM
+Distance dist = limelight.getDistance(); // default: inches
+if (dist == null) return;
+    
+Distance cm = limelight.getDistance(Centimeters);
+if (cm == null) return;
+
+Distance ft20 = limelight.getDistance(Feet, 20); // tag 20, and in Ft
+if (ft20 == null) return;
 ```
 :::
-If a specfic ID is not given the distance will be calculated using any detected april tag.
+If a specific ID is not given the distance will be calculated using any detected april tag.
 
 
 ## Relocalization
 
-`getPedroPoseFromLimelight()` returns the robot's field position as a `Pose2d` in [Pedro coordinates](https://pedropathing.com/docs/pathing/reference/coordinates), or `null` if no valid pose is available.
+`getPose()`and `getPedroPose()` returns the robot's field position as a `Pose2d` in [FTC Coordinate System](https://ftc-docs.firstinspires.org/en/latest/game_specific_resources/field_coordinate_system/field-coordinate-system.html) and [Pedro coordinates](https://pedropathing.com/docs/pathing/reference/coordinates) respectively, or `null` if no valid pose is available. 
 
 :::tabs key:code
 
 == Kotlin
 ```kotlin
-val pose = limelight.getPedroPoseFromLimelight() ?: return
+val pose = limelight.getPedroPose() ?: return
+// or 
+val pose = limelight.getPose() ?: return
 ```
 This method uses any detected AprilTag. It is recommended to exclude unwanted tags in the Limelight pipeline.
 
 == Java
 ```java
-Pose2d pose = limelight.getPedroPoseFromLimelight();
+Pose2d pose = limelight.getPedroPose();
+// or 
+Pose2d pose = limelight.getPose();
 if (pose == null) return;
 ```
 This method uses any detected AprilTag. It is recommended to exclude unwanted tags in the Limelight pipeline.
