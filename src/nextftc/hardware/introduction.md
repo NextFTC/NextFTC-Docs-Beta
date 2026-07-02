@@ -13,7 +13,7 @@ Basically, this means updates are only sent when the writes value changes by mor
 - [Servos](./motors-and-servos/servos.md)
 - [Continuous Rotation Servos](./motors-and-servos/cr-servos.md)
 - [Feedback Servos](./motors-and-servos/feedback-servos.md)
-- [RGB Headlight](motors-and-servos/rgb-headlight.md)
+- [RGB Indicator](motors-and-servos/rgb-indicator.md)
 
 ### Sensors
 - [Color Sensor](./sensors-and-webcams/color-sensors.md)
