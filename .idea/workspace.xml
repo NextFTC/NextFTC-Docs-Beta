@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="AutoImportSettings">
-    <option name="autoReloadType" value="SELECTIVE" />
+    <option name="autoReloadType" value="NONE" />
   </component>
   <component name="BackendCodeEditorMiscSettings">
     <option name="/Default/Environment/Hierarchy/GeneratedFilesCacheKey/Timestamp/@EntryValue" value="3" type="long" />
@@ -17,13 +17,19 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="338264fc-4164-4668-99d1-cb1cc5ad32b9" name="Changes" comment="update for v2">
-      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/content/docs/guides/installation.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/astro.config.mjs" beforeDir="false" afterPath="$PROJECT_DIR$/astro.config.mjs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bun.lock" beforeDir="false" afterPath="$PROJECT_DIR$/bun.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/content/docs/guides/example.md" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="ClangdSettings">
+    <option name="formatViaClangd" value="false" />
   </component>
   <component name="CopilotPersistence">
     <persistenceIdMap>
@@ -39,16 +45,16 @@
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
-  <component name="GitHubPullRequestSearchHistory"><![CDATA[{
-  "lastFilter": {
-    "state": "OPEN",
-    "assignee": "zachwaffle4"
+  <component name="GitHubPullRequestSearchHistory">{
+  &quot;lastFilter&quot;: {
+    &quot;state&quot;: &quot;OPEN&quot;,
+    &quot;assignee&quot;: &quot;zachwaffle4&quot;
   }
-}]]></component>
+}</component>
   <component name="GithubPullRequestsUISettings"><![CDATA[{
   "selectedUrlAndAccountId": {
-    "url": "https://github.com/NextFTC/NextFTC-Docs-Beta.git",
-    "accountId": "62a4ef25-0b91-4ce6-a5d0-68f8136f53c5"
+    "url": "https://github.com/AchintyaAkula/NextFTC-Docs-Beta.git",
+    "accountId": "9fdac6fd-3720-43e2-9440-2db3695091c7"
   }
 }]]></component>
   <component name="MacroExpansionManager">
@@ -117,10 +123,10 @@
       <entry key="W1" value="65.82239780344139" />
     </decayedShown>
   </component>
-  <component name="ProjectColorInfo"><![CDATA[{
-  "associatedIndex": 6,
-  "fromUser": false
-}]]></component>
+  <component name="ProjectColorInfo">{
+  &quot;associatedIndex&quot;: 6,
+  &quot;fromUser&quot;: false
+}</component>
   <component name="ProjectId" id="3GxlFXgFeTCUWzew3wybL9dC3Bo" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
@@ -136,6 +142,7 @@
     "RunOnceActivity.git.unshallow": "true",
     "RunOnceActivity.readMode.enableVisualFormatting": "true",
     "RunOnceActivity.typescript.service.memoryLimit.init": "true",
+    "cf.first.check.clang-format": "false",
     "cidr.known.project.marker": "true",
     "codeWithMe.voiceChat.enabledByDefault": "false",
     "com.intellij.ml.llm.matterhorn.ej.ui.settings.DefaultModelSelectionForGA.v1": "true",
