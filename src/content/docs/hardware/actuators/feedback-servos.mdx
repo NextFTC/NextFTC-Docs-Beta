@@ -1,44 +1,60 @@
 ---
 title: Feedback Servos
 description: Reading actual servo angle with NextFeedbackServo and NextFeedbackCRServo
-sidebar:
-    order: 4
 ---
 
 import { Tabs, TabItem } from '@astrojs/starlight/components';
 
-`NextFeedbackServo` and `NextFeedbackCRServo` pair a [`NextServo`](/reference/servos) or [`NextCRServo`](/reference/cr-servos) with an analog feedback input, for servos with a feedback wire (e.g. Axon). They inherit everything from their base class and add `angle` for reading the servo's actual physical angle.
+`NextFeedbackServo` and `NextFeedbackCRServo` pair a [`NextServo`](/hardware/actuators/servos) or [`NextCRServo`](/hardware/actuators/cr-servos) with an analog feedback input, for servos with a feedback wire (e.g. Axon). They inherit everything from their base class and add `angle` for reading the servo's actual physical angle.
 
 ## Creating a feedback servo
 
-Both classes pair the constructors you already know from [`NextServo`](/reference/servos) and [`NextCRServo`](/reference/cr-servos) with an already-constructed `AnalogFeedback` instance for reading the angle.
+Both classes pair the constructors you already know from [`NextServo`](/hardware/actuators/servos) and [`NextCRServo`](/hardware/actuators/cr-servos) with an already-constructed `AnalogFeedback` instance for reading the angle. `NextAnalogInput` is the built-in implementation of `AnalogFeedback`, and is what you'll use in most cases.
 All of these below are interchangeable with `NextFeedbackCRServo`.
 
 <Tabs syncKey="language">
 <TabItem label="Kotlin">
 ```kotlin
-val armServo = NextFeedbackServo("armServo", AnalogFeedback(name = "armEncoder")) // By configuration name
+// By configuration name
+val armServo = NextFeedbackServo("armServo", NextAnalogInput("armEncoder"))
 
-val armServo = NextFeedbackServo(RobotController.expansionHub, 0, AnalogFeedback(name = "armEncoder")) // By Lynx Module and port
-
-val armServo = NextFeedbackServo(RobotController.expansionHub, 0, NextAnalogInput(RobotController.expansionHub, 0)) // Full LynxModule
-
+// By Lynx Module and port
+val armServo = NextFeedbackServo(RobotController.expansionHub, 0, NextAnalogInput(RobotController.expansionHub, 0))
 ```
 </TabItem>
 <TabItem label="Java">
 ```java
-NextFeedbackServo armServo = new NextFeedbackServo("armServo", new AnalogFeedback("armEncoder")); // By configuration name
+// By configuration name
+NextFeedbackServo armServo = new NextFeedbackServo("armServo", new NextAnalogInput("armEncoder"));
 
-NextFeedbackServo armServo = new NextFeedbackServo(RobotController.getExpansionHub(), 0, new AnalogFeedback("armEncoder")); // By Lynx Module and port
-
-NextFeedbackServo armServo = new NextFeedbackServo(RobotController.getExpansionHub(), 0, new NextAnalogInput(RobotController.getExpansionHub(), 0)); // Full LynxModule
+// By Lynx Module and port
+NextFeedbackServo armServo = new NextFeedbackServo(RobotController.getExpansionHub(), 0, new NextAnalogInput(RobotController.getExpansionHub(), 0));
 ```
 </TabItem>
 </Tabs>
 
-The servo port must be in the range `[0, 5]`. Both constructors also accept the same optional `cacheTolerance` parameter as their base class.
+`feedback` accepts any `AnalogFeedback` implementation, so you can also write your own if `NextAnalogInput` doesn't fit what you want. `AnalogFeedback` just needs a `maxVoltage` and a `Supplier<Double>` that returns the raw voltage from wherever you're reading it
 
-`feedback` is an `AnalogFeedback` instance, constructed by hardware map name as shown above. You can also pass any custom `AnalogFeedback` implementation, or construct a `NextAnalogInput` directly by Lynx Module and port:
+<Tabs syncKey="language">
+<TabItem label="Kotlin">
+```kotlin
+val myAnalogInput = hardwareMap.get(AnalogInput::class.java, "armEncoder")
+
+val customFeedback = AnalogFeedback(maxVoltage = 3.3.volts) { myAnalogInput.voltage }
+
+val armServo = NextFeedbackServo("armServo", customFeedback)
+```
+</TabItem>
+<TabItem label="Java">
+```java
+AnalogInput myAnalogInput = hardwareMap.get(AnalogInput.class, "armEncoder");
+
+AnalogFeedback customFeedback = new AnalogFeedback(3.3.volts, () -> myAnalogInput.getVoltage());
+
+NextFeedbackServo armServo = new NextFeedbackServo("armServo", customFeedback);
+```
+</TabItem>
+</Tabs>
 
 ## Usage
 

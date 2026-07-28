@@ -4,7 +4,7 @@
     <option name="autoReloadType" value="NONE" />
   </component>
   <component name="BackendCodeEditorMiscSettings">
-    <option name="/Default/Environment/Hierarchy/GeneratedFilesCacheKey/Timestamp/@EntryValue" value="4" type="long" />
+    <option name="/Default/Environment/Hierarchy/GeneratedFilesCacheKey/Timestamp/@EntryValue" value="3" type="long" />
     <option name="/Default/Housekeeping/FeatureSuggestion/FeatureSuggestionManager/DisabledSuggesters/=SwitchToGoToActionSuggester/@EntryIndexedValue" value="true" type="bool" />
   </component>
   <component name="CMakeProjectFlavorService">
@@ -17,12 +17,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="338264fc-4164-4668-99d1-cb1cc5ad32b9" name="Changes" comment="analog input added">
-      <change afterPath="$PROJECT_DIR$/src/content/docs/hardware/miscellaneous/husky-lens.mdx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/content/docs/hardware/miscellaneous/limelights.mdx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/content/docs/hardware/miscellaneous/rgb-indicator.mdx" beforeDir="false" afterPath="$PROJECT_DIR$/src/content/docs/hardware/miscellaneous/rgb-indicator.mdx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.github/workflows/deploy.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/.github/workflows/deploy.yaml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bun.lock" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/content/docs/hardware/actuators/feedback-servos.mdx" beforeDir="false" afterPath="$PROJECT_DIR$/src/content/docs/hardware/actuators/feedback-servos.mdx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -41,7 +37,7 @@
     <option name="debugProfileId" value="956b62b3-5ed7-4785-8667-e65f3a7e3e10" />
   </component>
   <component name="EmbeddingIndexingInfo">
-    <option name="cachedIndexableFilesCount" value="37" />
+    <option name="cachedIndexableFilesCount" value="35" />
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -67,23 +63,23 @@
   </component>
   <component name="NextEditCompletionFeaturesState">
     <decayedCancelled>
-      <entry key="MS100" value="2.167586384039482" />
-      <entry key="MS500" value="4.846399320076234" />
-      <entry key="S2" value="7.538221448584106" />
-      <entry key="S5" value="9.293711302634463" />
-      <entry key="S10" value="12.576437140765766" />
-      <entry key="S30" value="23.56284863685121" />
-      <entry key="S60" value="30.637716623636127" />
-      <entry key="M2" value="35.62890414786543" />
-      <entry key="M5" value="39.26054549808289" />
-      <entry key="M10" value="40.59601831451304" />
-      <entry key="M15" value="41.056208970191996" />
-      <entry key="M30" value="41.52415385510372" />
-      <entry key="H1" value="41.76107996309363" />
-      <entry key="H2" value="41.880289592362615" />
-      <entry key="H4" value="41.94063691680618" />
-      <entry key="D1" value="56.62904305347164" />
-      <entry key="W1" value="138.89798874257508" />
+      <entry key="MS100" value="1.5933354792392223" />
+      <entry key="MS500" value="3.95199716214699" />
+      <entry key="S2" value="5.357826800587077" />
+      <entry key="S5" value="5.730305046719158" />
+      <entry key="S10" value="5.8629190764410914" />
+      <entry key="S30" value="6.1619719011896406" />
+      <entry key="S60" value="8.43337733930827" />
+      <entry key="M2" value="14.42831766672539" />
+      <entry key="M5" value="23.69516217771793" />
+      <entry key="M10" value="28.653650368035276" />
+      <entry key="M15" value="30.600471916903963" />
+      <entry key="M30" value="33.129464279767156" />
+      <entry key="H1" value="39.0448048570619" />
+      <entry key="H2" value="52.80593079218378" />
+      <entry key="H4" value="69.27747917487142" />
+      <entry key="D1" value="93.45768615157654" />
+      <entry key="W1" value="99.02299438164435" />
     </decayedCancelled>
     <decayedSelected>
       <entry key="MS100" value="0.0" />
@@ -91,37 +87,37 @@
       <entry key="S2" value="0.0" />
       <entry key="S5" value="0.0" />
       <entry key="S10" value="0.0" />
-      <entry key="S30" value="0.0" />
-      <entry key="S60" value="0.0" />
-      <entry key="M2" value="0.0" />
-      <entry key="M5" value="3.3231300547849977E-289" />
-      <entry key="M10" value="5.7646596211615014E-145" />
-      <entry key="M15" value="6.926530954620564E-97" />
-      <entry key="M30" value="8.322578299193413E-49" />
-      <entry key="H1" value="9.122816615055586E-25" />
-      <entry key="H2" value="9.55134368298805E-13" />
-      <entry key="H4" value="9.773097606689542E-7" />
-      <entry key="D1" value="0.09961820363104926" />
-      <entry key="W1" value="0.7192924957929295" />
+      <entry key="S30" value="4.605096478299967E-134" />
+      <entry key="S60" value="2.1459488526756517E-67" />
+      <entry key="M2" value="4.632438723475632E-34" />
+      <entry key="M5" value="4.637926622731226E-14" />
+      <entry key="M10" value="2.1535845984616483E-7" />
+      <entry key="M15" value="3.592868242820852E-5" />
+      <entry key="M30" value="0.005994053922697757" />
+      <entry key="H1" value="0.07742127564628314" />
+      <entry key="H2" value="0.27824678910327627" />
+      <entry key="H4" value="0.527491032249153" />
+      <entry key="D1" value="0.8988816473707332" />
+      <entry key="W1" value="0.9848862478346079" />
     </decayedSelected>
     <decayedShown>
-      <entry key="MS100" value="2.0646644008384025" />
-      <entry key="MS500" value="4.80581484477511" />
-      <entry key="S2" value="7.521438196779368" />
-      <entry key="S5" value="9.275858301438054" />
-      <entry key="S10" value="12.541566569729396" />
-      <entry key="S30" value="23.52587904428837" />
-      <entry key="S60" value="30.61257538732549" />
-      <entry key="M2" value="35.614206997416275" />
-      <entry key="M5" value="39.254083340479816" />
-      <entry key="M10" value="40.5926832557437" />
-      <entry key="M15" value="41.05396196317276" />
-      <entry key="M30" value="41.523018399676076" />
-      <entry key="H1" value="41.76050922189248" />
-      <entry key="H2" value="41.88000346517982" />
-      <entry key="H4" value="41.940494640180276" />
-      <entry key="D1" value="56.72863107583944" />
-      <entry key="W1" value="139.61727154942" />
+      <entry key="MS100" value="1.556282153025854" />
+      <entry key="MS500" value="3.932551732934006" />
+      <entry key="S2" value="5.351299067105605" />
+      <entry key="S5" value="5.727519634689568" />
+      <entry key="S10" value="5.861495395296375" />
+      <entry key="S30" value="6.161302023751089" />
+      <entry key="S60" value="8.432005400655113" />
+      <entry key="M2" value="14.426238209661854" />
+      <entry key="M5" value="23.693462397415562" />
+      <entry key="M10" value="28.65256767926624" />
+      <entry key="M15" value="30.599724763617697" />
+      <entry key="M30" value="33.13501955190684" />
+      <entry key="H1" value="39.12191383438073" />
+      <entry key="H2" value="53.08390132871216" />
+      <entry key="H4" value="69.80475851311314" />
+      <entry key="D1" value="94.35651432987224" />
+      <entry key="W1" value="100.00787239041483" />
     </decayedShown>
   </component>
   <component name="ProjectColorInfo">{
@@ -129,21 +125,6 @@
   &quot;fromUser&quot;: false
 }</component>
   <component name="ProjectId" id="3GxlFXgFeTCUWzew3wybL9dC3Bo" />
-  <component name="ProjectSessionTemplates">
-    <option name="panelTemplate">
-      <template>
-        <option name="modeId" value="Agent" />
-        <option name="model">
-          <model>
-            <option name="modelType" value="builtin_id" />
-            <option name="modelValue" value="auto" />
-          </model>
-        </option>
-        <option name="targetType" value="BACKGROUND" />
-        <option name="worktreeMode" value="WORKSPACE" />
-      </template>
-    </option>
-  </component>
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
@@ -329,7 +310,5 @@
     <MESSAGE value="IMU added" />
     <MESSAGE value="analog input added" />
     <option name="LAST_COMMIT_MESSAGE" value="analog input added" />
-    <MESSAGE value="add new theming" />
-    <option name="LAST_COMMIT_MESSAGE" value="add new theming" />
   </component>
 </project>
