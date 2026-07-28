@@ -22,10 +22,11 @@ export default defineConfig({
 			],
 			sidebar: [
 				{
-					label: 'Guides',
+					label: 'Introduction',
 					items: [
 						// Each item here is one entry in the navigation menu.
-						{ label: 'Installation Guide', slug: 'guides/installation' },
+						{ label: 'Introduction', slug: 'guides/introduction' },
+						{ label: 'Installation', slug: 'guides/installation' },
 					],
 				},
 				{

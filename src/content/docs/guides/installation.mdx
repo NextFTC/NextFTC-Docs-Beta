@@ -1,0 +1,31 @@
+---
+title: Getting Started
+description: Shows users how to install NextFTC into their FTC project 
+---
+import { Code, Tabs, TabItem } from '@astrojs/starlight/components';
+
+# Installation
+
+In the Teamcode `build.gradle`, add the two lines below to your `dependencies` block
+
+<Tabs syncKey="language">
+<TabItem label=".gradle">
+
+```groovy
+implementation 'dev.nextftc.v2:robot:0.1.0-rc.1'
+implementation 'com.pedropathing:ivy:1.0.0'
+```
+
+</TabItem>
+<TabItem label=".gradle.kts">
+
+```kotlin
+implementation("dev.nextftc.v2:robot:0.1.0-rc.1")
+implementation("com.pedropathing:ivy:1.0.0")
+```
+
+</TabItem>
+</Tabs>
+
+Then, press the `Sync Now` popup that appears at the top of your screen, wait a few seconds for wait to finish, and... your good to go!
+Next, head over to the [placeholder] page to learn how to users NextFTC
