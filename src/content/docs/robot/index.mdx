@@ -1,0 +1,13 @@
+---
+title: Robot Module
+description: NextRobot, OpModes, Mechanisms, Triggers, and the rest of the robot module.
+---
+
+The `robot` module is where everything comes together: your robot, your subsystems, your OpModes, and your
+gamepad bindings. It builds on top of `hardware` and `control`, and provides the command-based scheduling
+layer (via [PedroPathing Ivy](https://pedropathing.com/)) that ties them all to your gamepad.
+
+- **`NextRobot`**: the root of your robot, auto-discovered and instantiated for you.
+- **`Mechanism`**: a subsystem, like an arm or a claw, that exposes its behavior as commands.
+- **`NextOpMode`**: the base class for your OpModes, paired with the `@NextTeleop`/`@NextAutonomous` annotations.
+- **`Trigger`, `RangeTrigger`, and `CommandGamepad`**: bind gamepad input directly to commands.
