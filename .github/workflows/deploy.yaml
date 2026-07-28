@@ -3,6 +3,7 @@ name: Deploy to GitHub Pages
 on:
   push:
     branches: [ main ]
+  pull_request:
   workflow_dispatch:
 
 permissions:
@@ -22,6 +23,7 @@ jobs:
 
   deploy:
     needs: build
+    if: github.ref == 'refs/heads/main' && github.repository == 'nextftc/nextftc-docs-beta'
     runs-on: ubuntu-latest
     environment:
       name: github-pages
