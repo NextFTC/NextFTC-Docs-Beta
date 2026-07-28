@@ -14,5 +14,5 @@
 /* The NextFTC wordmark logo has extra empty space below the text, so it reads
    as vertically off-center in the header. Nudge it down to compensate. */
 .site-title img {
-	margin-top: 0.75rem;
+	margin-top: 0.5rem;
 }

@@ -1,6 +1,7 @@
 // @ts-check
 import { defineConfig } from 'astro/config';
 import starlight from '@astrojs/starlight';
+import starlightThemeGalaxy from 'starlight-theme-galaxy';
 
 // https://astro.build/config
 export default defineConfig({
@@ -9,11 +10,11 @@ export default defineConfig({
 		starlight({
 			title: 'NextFTC',
 			logo: {
-				light: './src/assets/nextftc-logo-light.png',
-				dark: './src/assets/nextftc-logo-dark.png',
+				light: './src/assets/nextftc-banner-light.png',
+				dark: './src/assets/nextftc-banner-dark.png',
 				replacesTitle: true,
 			},
-			favicon: '/favicon.png',
+			favicon: '/favicon.svg',
 			customCss: ['./src/styles/custom.css'],
 			social: [
 				{ icon: 'github', label: 'GitHub', href: 'https://github.com/NextFTC/NextFTCSuite' },
@@ -32,6 +33,7 @@ export default defineConfig({
 					items: [{ autogenerate: { directory: 'reference' } }],
 				},
 			],
+			plugins: [starlightThemeGalaxy()]
 		}),
 	],
 });

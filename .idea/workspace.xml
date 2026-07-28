@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="AutoImportSettings">
-    <option name="autoReloadType" value="NONE" />
+    <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="BackendCodeEditorMiscSettings">
     <option name="/Default/Environment/Hierarchy/GeneratedFilesCacheKey/Timestamp/@EntryValue" value="3" type="long" />
@@ -16,20 +16,22 @@
     </configurations>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="338264fc-4164-4668-99d1-cb1cc5ad32b9" name="Changes" comment="update for v2">
-      <change afterPath="$PROJECT_DIR$/src/content/docs/guides/installation.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+    <list default="true" id="338264fc-4164-4668-99d1-cb1cc5ad32b9" name="Changes" comment="update readme + pages deploy">
+      <change afterPath="$PROJECT_DIR$/public/favicon.svg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/assets/nextftc-logo.png" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/astro.config.mjs" beforeDir="false" afterPath="$PROJECT_DIR$/astro.config.mjs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/bun.lock" beforeDir="false" afterPath="$PROJECT_DIR$/bun.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/content/docs/guides/example.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/favicon.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/assets/nextftc-logo-dark.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/assets/nextftc-banner-dark.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/assets/nextftc-logo-light.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/assets/nextftc-banner-light.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/content/docs/index.mdx" beforeDir="false" afterPath="$PROJECT_DIR$/src/content/docs/index.mdx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/styles/custom.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/styles/custom.css" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
-  </component>
-  <component name="ClangdSettings">
-    <option name="formatViaClangd" value="false" />
   </component>
   <component name="CopilotPersistence">
     <persistenceIdMap>
@@ -40,21 +42,21 @@
     <option name="debugProfileId" value="956b62b3-5ed7-4785-8667-e65f3a7e3e10" />
   </component>
   <component name="EmbeddingIndexingInfo">
-    <option name="cachedIndexableFilesCount" value="30" />
+    <option name="cachedIndexableFilesCount" value="35" />
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
-  <component name="GitHubPullRequestSearchHistory">{
-  &quot;lastFilter&quot;: {
-    &quot;state&quot;: &quot;OPEN&quot;,
-    &quot;assignee&quot;: &quot;zachwaffle4&quot;
+  <component name="GitHubPullRequestSearchHistory"><![CDATA[{
+  "lastFilter": {
+    "state": "OPEN",
+    "assignee": "zachwaffle4"
   }
-}</component>
+}]]></component>
   <component name="GithubPullRequestsUISettings"><![CDATA[{
   "selectedUrlAndAccountId": {
-    "url": "https://github.com/AchintyaAkula/NextFTC-Docs-Beta.git",
-    "accountId": "9fdac6fd-3720-43e2-9440-2db3695091c7"
+    "url": "https://github.com/NextFTC/NextFTC-Docs-Beta.git",
+    "accountId": "62a4ef25-0b91-4ce6-a5d0-68f8136f53c5"
   }
 }]]></component>
   <component name="MacroExpansionManager">
@@ -66,67 +68,67 @@
   </component>
   <component name="NextEditCompletionFeaturesState">
     <decayedCancelled>
-      <entry key="MS100" value="1.0" />
-      <entry key="MS500" value="1.0" />
-      <entry key="S2" value="1.0" />
-      <entry key="S5" value="1.0" />
-      <entry key="S10" value="1.0" />
-      <entry key="S30" value="1.0" />
-      <entry key="S60" value="1.0000000061362226" />
-      <entry key="M2" value="1.0002507018818048" />
-      <entry key="M5" value="1.3067576188451127" />
-      <entry key="M10" value="5.220818346819038" />
-      <entry key="M15" value="11.353257460448216" />
-      <entry key="M30" value="26.636718523293755" />
-      <entry key="H1" value="41.46821512107497" />
-      <entry key="H2" value="51.88026394531118" />
-      <entry key="H4" value="58.06118098072133" />
-      <entry key="D1" value="63.78706167208798" />
-      <entry key="W1" value="64.82528722192174" />
+      <entry key="MS100" value="1.5933354792392223" />
+      <entry key="MS500" value="3.95199716214699" />
+      <entry key="S2" value="5.357826800587077" />
+      <entry key="S5" value="5.730305046719158" />
+      <entry key="S10" value="5.8629190764410914" />
+      <entry key="S30" value="6.1619719011896406" />
+      <entry key="S60" value="8.43337733930827" />
+      <entry key="M2" value="14.42831766672539" />
+      <entry key="M5" value="23.69516217771793" />
+      <entry key="M10" value="28.653650368035276" />
+      <entry key="M15" value="30.600471916903963" />
+      <entry key="M30" value="33.129464279767156" />
+      <entry key="H1" value="39.0448048570619" />
+      <entry key="H2" value="52.80593079218378" />
+      <entry key="H4" value="69.27747917487142" />
+      <entry key="D1" value="93.45768615157654" />
+      <entry key="W1" value="99.02299438164435" />
     </decayedCancelled>
     <decayedSelected>
       <entry key="MS100" value="0.0" />
       <entry key="MS500" value="0.0" />
       <entry key="S2" value="0.0" />
-      <entry key="S5" value="2.2854375900868043E-152" />
-      <entry key="S10" value="1.511766380789967E-76" />
-      <entry key="S30" value="5.327149616122561E-26" />
-      <entry key="S60" value="2.3080618744138006E-13" />
-      <entry key="M2" value="4.804229255992892E-7" />
-      <entry key="M5" value="0.002969268625917237" />
-      <entry key="M10" value="0.05449099582423903" />
-      <entry key="M15" value="0.1437307956849702" />
-      <entry key="M30" value="0.37911844545599455" />
-      <entry key="H1" value="0.6157259499615021" />
-      <entry key="H2" value="0.7846820693513402" />
-      <entry key="H4" value="0.8858228205184949" />
-      <entry key="D1" value="0.9799963933924405" />
-      <entry key="W1" value="0.9971175355102803" />
+      <entry key="S5" value="0.0" />
+      <entry key="S10" value="0.0" />
+      <entry key="S30" value="4.605096478299967E-134" />
+      <entry key="S60" value="2.1459488526756517E-67" />
+      <entry key="M2" value="4.632438723475632E-34" />
+      <entry key="M5" value="4.637926622731226E-14" />
+      <entry key="M10" value="2.1535845984616483E-7" />
+      <entry key="M15" value="3.592868242820852E-5" />
+      <entry key="M30" value="0.005994053922697757" />
+      <entry key="H1" value="0.07742127564628314" />
+      <entry key="H2" value="0.27824678910327627" />
+      <entry key="H4" value="0.527491032249153" />
+      <entry key="D1" value="0.8988816473707332" />
+      <entry key="W1" value="0.9848862478346079" />
     </decayedSelected>
     <decayedShown>
-      <entry key="MS100" value="0.9592641193252643" />
-      <entry key="MS500" value="0.9917167307382933" />
-      <entry key="S2" value="0.9979227189990506" />
-      <entry key="S5" value="0.999168569213607" />
-      <entry key="S10" value="0.9995841981612189" />
-      <entry key="S30" value="0.9998613801725043" />
-      <entry key="S60" value="0.9999306938204383" />
-      <entry key="M2" value="1.0002165027217123" />
-      <entry key="M5" value="1.3096682546301501" />
-      <entry key="M10" value="5.274907478185881" />
-      <entry key="M15" value="11.496296923383516" />
-      <entry key="M30" value="27.014938433290393" />
-      <entry key="H1" value="42.083215753273365" />
-      <entry key="H2" value="52.66448512001448" />
-      <entry key="H4" value="58.9467439995178" />
-      <entry key="D1" value="64.76701021444858" />
-      <entry key="W1" value="65.82239780344139" />
+      <entry key="MS100" value="1.556282153025854" />
+      <entry key="MS500" value="3.932551732934006" />
+      <entry key="S2" value="5.351299067105605" />
+      <entry key="S5" value="5.727519634689568" />
+      <entry key="S10" value="5.861495395296375" />
+      <entry key="S30" value="6.161302023751089" />
+      <entry key="S60" value="8.432005400655113" />
+      <entry key="M2" value="14.426238209661854" />
+      <entry key="M5" value="23.693462397415562" />
+      <entry key="M10" value="28.65256767926624" />
+      <entry key="M15" value="30.599724763617697" />
+      <entry key="M30" value="33.13501955190684" />
+      <entry key="H1" value="39.12191383438073" />
+      <entry key="H2" value="53.08390132871216" />
+      <entry key="H4" value="69.80475851311314" />
+      <entry key="D1" value="94.35651432987224" />
+      <entry key="W1" value="100.00787239041483" />
     </decayedShown>
   </component>
-  <component name="ProjectColorInfo">{
-  &quot;associatedIndex&quot;: 6,
-  &quot;fromUser&quot;: false
-}</component>
+  <component name="ProjectColorInfo"><![CDATA[{
+  "associatedIndex": 6,
+  "fromUser": false
+}]]></component>
   <component name="ProjectId" id="3GxlFXgFeTCUWzew3wybL9dC3Bo" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
@@ -142,7 +144,6 @@
     "RunOnceActivity.git.unshallow": "true",
     "RunOnceActivity.readMode.enableVisualFormatting": "true",
     "RunOnceActivity.typescript.service.memoryLimit.init": "true",
-    "cf.first.check.clang-format": "false",
     "cidr.known.project.marker": "true",
     "codeWithMe.voiceChat.enabledByDefault": "false",
     "com.intellij.ml.llm.matterhorn.ej.ui.settings.DefaultModelSelectionForGA.v1": "true",
@@ -151,9 +152,12 @@
     "javascript.preferred.runtime.type.id": "node",
     "junie.onboarding.icon.badge.shown": "true",
     "kotlin-language-version-configured": "true",
+    "last_opened_file_path": "/Users/zach/IdeaProjects/NextFTC-Docs-Beta/src/assets",
     "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.jshint": "true",
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.jshint": "",
     "node.js.selected.package.tslint": "(autodetect)",
     "nodejs_package_manager_path": "npm",
     "org.rust.first.attach.projects": "true",
@@ -162,6 +166,12 @@
     "ts.external.directory.path": "/Users/zach/Applications/IntelliJ IDEA 2026.2.0.1.app/Contents/plugins/javascript-plugin/jsLanguageServicesImpl/external"
   }
 }]]></component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src/assets" />
+      <recent name="$PROJECT_DIR$/public" />
+    </key>
+  </component>
   <component name="RunManager">
     <configuration default="true" type="CMakeRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" EMULATE_TERMINAL="false" PASS_PARENT_ENVS_2="true">
       <method v="2">
@@ -204,6 +214,7 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="update for v2" />
-    <option name="LAST_COMMIT_MESSAGE" value="update for v2" />
+    <MESSAGE value="update readme + pages deploy" />
+    <option name="LAST_COMMIT_MESSAGE" value="update readme + pages deploy" />
   </component>
 </project>

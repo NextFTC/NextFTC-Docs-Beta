@@ -4,10 +4,16 @@ description: The modern FTC library for Kotlin and Java.
 template: splash
 hero:
   tagline: A powerful, ergonomic library for FTC robots, built around commands, triggers, and zero boilerplate.
+  image:
+    file: ./../../assets/nextftc-logo.png
   actions:
     - text: Get Started
       link: /guides/introduction/
       icon: right-arrow
+    - text: API Documentation
+      link: https://kdoc.nextftc.dev/
+      icon: external
+      variant: minimal
     - text: View on GitHub
       link: https://github.com/NextFTC/NextFTCSuite
       icon: external
@@ -18,7 +24,7 @@ import { Card, CardGrid } from '@astrojs/starlight/components';
 
 ## What's in NextFTC v2?
 
-<CardGrid stagger>
+<CardGrid>
   <Card title="Command-Based Architecture" icon="puzzle">
     Build robots around composable commands and reactive triggers. Bind gamepad inputs to commands with a single line of code.
   </Card>
@@ -30,5 +36,11 @@ import { Card, CardGrid } from '@astrojs/starlight/components';
   </Card>
   <Card title="Built-In Control Theory" icon="open-book">
     PID, feedforward, motion profiling, Kalman filtering, and type-safe units: everything you need to close the loop on any mechanism.
+  </Card>
+  <Card title="Type-Safe Units" icon="document">
+    Write `5.0.meters` or `12.0.volts` instead of bare doubles. Arithmetic between units produces correctly typed results, caught at compile time.
+  </Card>
+  <Card title="Kotlin & Java" icon="laptop">
+    Written in Kotlin with Java interop as a first-class citizen, so your team can use either language across the same codebase.
   </Card>
 </CardGrid>
