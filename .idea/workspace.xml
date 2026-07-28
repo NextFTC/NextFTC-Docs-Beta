@@ -16,7 +16,9 @@
     </configurations>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="338264fc-4164-4668-99d1-cb1cc5ad32b9" name="Changes" comment="update readme + pages deploy" />
+    <list default="true" id="338264fc-4164-4668-99d1-cb1cc5ad32b9" name="Changes" comment="update readme + pages deploy">
+      <change afterPath="$PROJECT_DIR$/bun.lock" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
