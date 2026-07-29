@@ -17,12 +17,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="338264fc-4164-4668-99d1-cb1cc5ad32b9" name="Changes" comment="analog input added">
-      <change afterPath="$PROJECT_DIR$/src/content/docs/hardware/miscellaneous/husky-lens.mdx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/content/docs/hardware/miscellaneous/limelights.mdx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/content/docs/hardware/miscellaneous/rgb-indicator.mdx" beforeDir="false" afterPath="$PROJECT_DIR$/src/content/docs/hardware/miscellaneous/rgb-indicator.mdx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.github/workflows/deploy.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/.github/workflows/deploy.yaml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bun.lock" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -328,7 +323,6 @@
     <MESSAGE value="pinpoint.mdx added" />
     <MESSAGE value="IMU added" />
     <MESSAGE value="analog input added" />
-    <option name="LAST_COMMIT_MESSAGE" value="analog input added" />
     <MESSAGE value="add new theming" />
     <option name="LAST_COMMIT_MESSAGE" value="add new theming" />
   </component>
