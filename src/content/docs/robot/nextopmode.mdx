@@ -1,0 +1,117 @@
+---
+title: NextOpMode
+description: The base class for your OpModes, with the gamepad, telemetry, and hardware map ready to go.
+sidebar:
+  order: 4
+---
+
+import { Tabs, TabItem, Aside } from "@astrojs/starlight/components";
+
+`NextOpMode` is the base class for every OpMode you write with NextFTC.
+It wraps the FTC SDK's `LinearOpMode`,
+automatically wires up your [`NextRobot`](/robot/nextrobot/),
+and drives the command scheduler and [triggers](/robot/triggers/) for you every loop.
+
+## Fields
+
+Every `NextOpMode` exposes these directly, no `hardwareMap.get(...)` boilerplate required:
+
+- **`gamepad1`** / **`gamepad2`** — the standard FTC `Gamepad` objects.
+- **`telemetry`** — the standard FTC SDK `Telemetry`.
+- **`hardwareMap`** — the standard FTC SDK `HardwareMap`.
+
+## Lifecycle
+
+Override whichever of these you need — all are optional:
+
+| Method               | Called                                           |
+| -------------------- | ------------------------------------------------ |
+| `disabledPeriodic()` | Repeatedly, while the Driver Station is in INIT. |
+| `start()`            | Once, right after the PLAY button is pressed.    |
+| `periodic()`         | Repeatedly, while the OpMode is running.         |
+| `end()`              | Once, when the OpMode finishes.                  |
+
+<Tabs syncKey="language">
+<TabItem label="Kotlin">
+
+```kotlin
+@NextTeleop(name = "My Teleop")
+class MyTeleop(robot: MyRobot) : NextOpMode(robot) {
+    override fun periodic() {
+        Telemetry.log("Status", "Running")
+    }
+}
+```
+
+</TabItem>
+<TabItem label="Java">
+
+```java
+@NextTeleop(name = "My Teleop")
+public class MyTeleop extends NextOpMode {
+    public MyTeleop(MyRobot robot) { super(robot); }
+
+    @Override
+    public void periodic() {
+        Telemetry.log("Status", "Running");
+    }
+}
+```
+
+</TabItem>
+</Tabs>
+
+Take your `NextRobot` as a constructor parameter and pass it straight to `super(...)`.
+NextFTC's scanner instantiates your OpMode and injects the discovered robot instance for you,
+so you never construct `MyRobot` yourself.
+See [NextFTC robot project structure](/robot/project-structure/) for the full injection rules.
+
+Bind gamepad input to your mechanisms' commands from `start()`;
+see [Triggers and RangeTriggers](/robot/triggers/) for the full binding API.
+
+## What NextOpMode does for you automatically
+
+You'll never need to call these yourself, as `NextOpMode` runs them every loop behind the scenes:
+
+- Calls `periodic()` on your `NextRobot` and every one of its mechanisms.
+- Polls triggers and executes the Ivy scheduler, so bound commands actually run.
+- Updates motor control loops.
+- Flushes telemetry.
+
+## `BulkReadHook`
+
+One additional behavior is opt-in rather than automatic:
+bulk-reading hardware from your control/expansion hubs.
+Pass `BulkReadHook` as an extra constructor argument to switch your Lynx modules to manual bulk-caching mode and have the cache cleared for you every loop:
+
+<Tabs syncKey="language">
+<TabItem label="Kotlin">
+
+```kotlin
+class MyTeleop(robot: MyRobot) : NextOpMode(robot, BulkReadHook)
+```
+
+</TabItem>
+<TabItem label="Java">
+
+```java
+public class MyTeleop extends NextOpMode {
+    public MyTeleop(MyRobot robot) { super(robot, BulkReadHook.INSTANCE); }
+}
+```
+
+</TabItem>
+</Tabs>
+
+## Registering with the Driver Station
+
+Annotate your class with `@NextTeleop` or `@NextAutonomous` to make it selectable on the Driver Station.
+Both are picked up automatically, just like the `@TeleOp` and `@Autonomous` annotations in the FTC SDK.
+See [NextFTC robot project structure](/robot/project-structure/) for how this discovery works.
+
+<Aside type="note">
+  `@NextTeleop(name, group)` and `@NextAutonomous(name, group, preselectTeleop)`
+  both default `name` to the class name. `group` defaults to `"NextFTC Teleop"`
+  or `"NextFTC Auto"` respectively. `preselectTeleop` lets an autonomous OpMode
+  suggest which teleop the Driver Station should switch to afterward.
+</Aside>

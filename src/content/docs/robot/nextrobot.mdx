@@ -1,0 +1,87 @@
+---
+title: NextRobot
+description: The root of your robot, auto-discovered and shared across every OpMode.
+sidebar:
+  order: 3
+---
+
+import { Tabs, TabItem } from "@astrojs/starlight/components";
+
+`NextRobot` is the root of your robot.
+It's where you declare the [mechanisms](/robot/mechanisms/) that make up your robot,
+and it's automatically discovered and shared across every one of your [`NextOpMode`](/robot/nextopmode/)s,
+so you never construct or register it yourself.
+
+<Tabs syncKey="language">
+<TabItem label="Kotlin">
+
+```kotlin
+interface NextRobot {
+    fun periodic() {}
+    val mechanisms: Set<Mechanism> get() = emptySet()
+}
+```
+
+</TabItem>
+<TabItem label="Java">
+
+```java
+public interface NextRobot {
+    default void periodic() {}
+    default Set<Mechanism> getMechanisms() { return Collections.emptySet(); }
+}
+```
+
+</TabItem>
+</Tabs>
+
+## `mechanisms`
+
+The set of [`Mechanism`](/robot/mechanisms/)s that make up your robot.
+Every loop,
+NextFTC calls `periodic()` on each mechanism in this set for you.
+
+## `periodic()`
+
+Called once per loop, before any of your mechanisms' `periodic()` methods.
+Use it for robot-wide logic that doesn't belong to any single mechanism.
+
+## Example
+
+<Tabs syncKey="language">
+<TabItem label="Kotlin">
+
+```kotlin
+class MyRobot : NextRobot {
+    val claw = Claw()
+    val arm = Arm()
+
+    override val mechanisms = setOf(claw, arm)
+}
+```
+
+</TabItem>
+<TabItem label="Java">
+
+```java
+public class MyRobot implements NextRobot {
+    Claw claw = new Claw();
+    Arm arm = new Arm();
+
+    @Override
+    public Set<Mechanism> getMechanisms() {
+        return Set.of(claw, arm);
+    }
+}
+```
+
+</TabItem>
+</Tabs>
+
+## Discovery
+
+You don't construct your `NextRobot` yourself,
+and you don't register it anywhere — NextFTC finds it for you.
+Give your implementing class a public no-arg constructor (the recommended approach in both Kotlin and Java) and it will be discovered automatically and made available to your `NextOpMode`s.
+Exactly one `NextRobot` implementation should exist in your project.
+See [NextFTC robot project structure](/robot/project-structure/) for the full details of how this discovery works.

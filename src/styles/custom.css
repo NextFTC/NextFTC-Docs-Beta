@@ -1,23 +1,22 @@
 /* NextFTC brand colors, based on the primary blue (#005bab) used across NextFTC-Docs. */
 :root {
-	--sl-color-accent-low: #d6e6f5;
-	--sl-color-accent: #005bab;
-	--sl-color-accent-high: #143a5c;
+  --sl-color-accent-low: #d6e6f5;
+  --sl-color-accent: #005bab;
+  --sl-color-accent-high: #143a5c;
 }
 
-:root[data-theme='dark'] {
-	--sl-color-accent-low: #163650;
-	--sl-color-accent: #3a86c8;
-	--sl-color-accent-high: #b3d3ec;
+:root[data-theme="dark"] {
+  --sl-color-accent-low: #163650;
+  --sl-color-accent: #3a86c8;
+  --sl-color-accent-high: #b3d3ec;
 }
 
 /* The NextFTC wordmark logo has extra empty space below the text, so it reads
    as vertically off-center in the header. Nudge it down to compensate. */
 .site-title img {
-	margin-top: 0.5rem;
+  margin-top: 0.5rem;
 }
 
 .sidebar-pane .sidebar-group .sidebar-group summary {
-    font-size: 0.875rem;
+  font-size: 0.875rem;
 }
-
