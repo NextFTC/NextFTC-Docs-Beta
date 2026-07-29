@@ -40,11 +40,10 @@ NextMotor intakeMotor = new NextMotor("intakeMotor");
 
 All constructors accept two optional parameters:
 
-| Parameter                                                                                          | Type     | Default | Description                                                                       |
-| -------------------------------------------------------------------------------------------------- | -------- | ------- | --------------------------------------------------------------------------------- |
-| `anglePerCount`                                                                                    | `Angle`  | 1.0 rad | The angle that a motor's shaft rotates by for every 'tick' or 'count'.            |
-| Used for calculations that directly convert 'ticks' to the number of rotations the motor has spun. |
-| `cacheTolerance`                                                                                   | `Double` | `0.01`  | Minimum change in `throttle` required before a new value is written to the motor. |
+| Parameter        | Type     | Default | Description                                                                                                                                                              |
+| ---------------- | -------- | ------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| `anglePerCount`  | `Angle`  | 1.0 rad | The angle that a motor's shaft rotates by for every 'tick' or 'count'. Used for calculations that directly convert 'ticks' to the number of rotations the motor has spun.|
+| `cacheTolerance` | `Double` | `0.01`  | Minimum change in `throttle` required before a new value is written to the motor.                                                                                        |
 
 ## Usage
 
