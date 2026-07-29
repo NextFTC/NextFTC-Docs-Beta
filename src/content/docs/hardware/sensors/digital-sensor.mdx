@@ -16,16 +16,20 @@ Most digital sensors are active low, meaning they read `false` when triggered (s
 <Tabs syncKey="language">
 <TabItem label="Kotlin">
 ```kotlin
-val beamBreak = NextDigitalSensor(RobotController.controlHub, 0) // By Lynx Module and port, recommended
+// By Lynx Module and port, recommended
+val beamBreak = NextDigitalSensor(RobotController.controlHub, 0)
 
-val beamBreak = NextDigitalSensor("beamBreak") // Using your configuration name
+// Using your configuration name
+val beamBreak = NextDigitalSensor("beamBreak")
 ```
 </TabItem>
 <TabItem label="Java">
 ```java
-NextDigitalSensor beamBreak = new NextDigitalSensor(RobotController.getControlHub(), 0); // By Lynx Module and port, recommended
+// By Lynx Module and port, recommended
+NextDigitalSensor beamBreak = new NextDigitalSensor(RobotController.getControlHub(), 0);
 
-NextDigitalSensor beamBreak = new NextDigitalSensor("beamBreak"); // Using your configuration name
+// Using your configuration name
+NextDigitalSensor beamBreak = new NextDigitalSensor("beamBreak");
 ```
 </TabItem>
 </Tabs>

@@ -17,21 +17,26 @@ All of these below are interchangeable with `NextFeedbackCRServo`.
 <Tabs syncKey="language">
 <TabItem label="Kotlin">
 ```kotlin
-val armServo = NextFeedbackServo("armServo", AnalogFeedback(name = "armEncoder")) // By configuration name
+// By configuration name
+val armServo = NextFeedbackServo("armServo", NextAnalogInput("armEncoder"))
 
-val armServo = NextFeedbackServo(RobotController.expansionHub, 0, AnalogFeedback(name = "armEncoder")) // By Lynx Module and port
+// By Lynx Module and port + NextAnalogInput
+val armServo = NextFeedbackServo(RobotController.expansionHub, 0, NextAnalogInput("armEncoder"))
 
-val armServo = NextFeedbackServo(RobotController.expansionHub, 0, NextAnalogInput(RobotController.expansionHub, 0)) // Full LynxModule
-
+// Additionally, using a custom feedback method
+val armServo = NextFeedbackServo("armServo", AnalogFeedback(voltageSupplier = { /* custom method here */ } ))
 ```
 </TabItem>
 <TabItem label="Java">
 ```java
-NextFeedbackServo armServo = new NextFeedbackServo("armServo", new AnalogFeedback("armEncoder")); // By configuration name
+// By configuration name
+NextFeedbackServo armServo = new NextFeedbackServo("armServo", new NextAnalogInput("armEncoder"));
 
-NextFeedbackServo armServo = new NextFeedbackServo(RobotController.getExpansionHub(), 0, new AnalogFeedback("armEncoder")); // By Lynx Module and port
+ // By Lynx Module and port
+NextFeedbackServo armServo = new NextFeedbackServo(RobotController.getExpansionHub(), 0, new NextAnalogInput("armEncoder"));
 
-NextFeedbackServo armServo = new NextFeedbackServo(RobotController.getExpansionHub(), 0, new NextAnalogInput(RobotController.getExpansionHub(), 0)); // Full LynxModule
+// Additionally, using a custom feedback method
+NextFeedbackServo armServo = new NextFeedbackServo("armServo", new AnalogFeedback(() -> { /* custom method here */ };
 ```
 </TabItem>
 </Tabs>

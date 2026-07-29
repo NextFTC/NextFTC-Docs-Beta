@@ -14,16 +14,20 @@ import { Tabs, TabItem } from '@astrojs/starlight/components';
 <Tabs syncKey="language">
 <TabItem label="Kotlin">
 ```kotlin
-val indicator = NextRGBIndicator(RobotController.controlHub, 0) // By Lynx Module and port, recommended
+// By Lynx Module and port, recommended
+val indicator = NextRGBIndicator(RobotController.controlHub, 0)
 
-val indicator = NextRGBIndicator("LED") // Using your configuration name
+// Using your configuration name
+val indicator = NextRGBIndicator("LED")
 ```
 </TabItem>
 <TabItem label="Java">
 ```java
-NextRGBIndicator indicator = new NextRGBIndicator(RobotController.getControlHub(), 0); // By Lynx Module and port, recommended
+// By Lynx Module and port, recommended
+NextRGBIndicator indicator = new NextRGBIndicator(RobotController.getControlHub(), 0);
 
-NextRGBIndicator indicator = new NextRGBIndicator("LED"); // Using your configuration name
+// Using your configuration name
+NextRGBIndicator indicator = new NextRGBIndicator("LED");
 ```
 </TabItem>
 </Tabs>

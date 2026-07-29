@@ -14,16 +14,20 @@ import { Tabs, TabItem } from '@astrojs/starlight/components';
 <Tabs syncKey="language">
 <TabItem label="Kotlin">
 ```kotlin
-val pinpoint = NextPinpoint(RobotController.controlHub, 0) // By Lynx Module and I2C bus
+// By Lynx Module and I2C bus
+val pinpoint = NextPinpoint(RobotController.controlHub, 0)
 
-val pinpoint = NextPinpoint("pinpoint") // Using your configuration name
+// Using your configuration name
+val pinpoint = NextPinpoint("pinpoint")
 ```
 </TabItem>
 <TabItem label="Java">
 ```java
-NextPinpoint pinpoint = new NextPinpoint(RobotController.getControlHub(), 0); // By Lynx Module and I2C bus
+// By Lynx Module and I2C bus
+NextPinpoint pinpoint = new NextPinpoint(RobotController.getControlHub(), 0);
 
-NextPinpoint pinpoint = new NextPinpoint("pinpoint"); // Using your configuration name
+// Using your configuration name
+NextPinpoint pinpoint = new NextPinpoint("pinpoint");
 ```
 </TabItem>
 </Tabs>

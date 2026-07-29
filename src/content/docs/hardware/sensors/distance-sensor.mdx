@@ -14,16 +14,20 @@ import { Tabs, TabItem } from '@astrojs/starlight/components';
 <Tabs syncKey="language">
 <TabItem label="Kotlin">
 ```kotlin
-val sensor = NextDistanceSensor(RobotController.controlHub, 0) // By Lynx Module and I2C bus, recommended
+// By Lynx Module and I2C bus, recommended
+val sensor = NextDistanceSensor(RobotController.controlHub, 0)
 
-val sensor = NextDistanceSensor("distanceSensor") // Using your configuration name
+// Using your configuration name
+val sensor = NextDistanceSensor("distanceSensor")
 ```
 </TabItem>
 <TabItem label="Java">
 ```java
-NextDistanceSensor sensor = new NextDistanceSensor(RobotController.getControlHub(), 0); // By Lynx Module and I2C bus, recommended
+// By Lynx Module and I2C bus, recommended
+NextDistanceSensor sensor = new NextDistanceSensor(RobotController.getControlHub(), 0);
 
-NextDistanceSensor sensor = new NextDistanceSensor("distanceSensor"); // Using your configuration name
+// Using your configuration name
+NextDistanceSensor sensor = new NextDistanceSensor("distanceSensor");
 ```
 </TabItem>
 </Tabs>

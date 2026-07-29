@@ -16,16 +16,20 @@ It inherits from `AnalogFeedback`, so any `NextAnalogInput` can also be passed d
 <Tabs syncKey="language">
 <TabItem label="Kotlin">
 ```kotlin
-val input = NextAnalogInput(RobotController.controlHub, 0) // By Lynx Module and channel, recommended
+// By Lynx Module and channel, recommended
+val input = NextAnalogInput(RobotController.controlHub, 0)
 
-val input = NextAnalogInput("armEncoder") // Using your configuration name
+// Using your configuration name
+val input = NextAnalogInput("armEncoder")
 ```
 </TabItem>
 <TabItem label="Java">
 ```java
-NextAnalogInput input = new NextAnalogInput(RobotController.getControlHub(), 0); // By Lynx Module and channel, recommended
+// By Lynx Module and channel, recommended
+NextAnalogInput input = new NextAnalogInput(RobotController.getControlHub(), 0);
 
-NextAnalogInput input = new NextAnalogInput("armEncoder"); // Using your configuration name
+// Using your configuration name
+NextAnalogInput input = new NextAnalogInput("armEncoder");
 ```
 </TabItem>
 </Tabs>

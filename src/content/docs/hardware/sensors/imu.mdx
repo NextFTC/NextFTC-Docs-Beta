@@ -14,16 +14,20 @@ import { Tabs, TabItem } from '@astrojs/starlight/components';
 <Tabs syncKey="language">
 <TabItem label="Kotlin">
 ```kotlin
-val imu = NextIMU() // Defaults to the configuration name "imu"
+// Defaults to the configuration name "imu"
+val imu = NextIMU()
 
-val imu = NextIMU("imu") // Using a custom configuration name
+// Using a custom configuration name
+val imu = NextIMU("imu")
 ```
 </TabItem>
 <TabItem label="Java">
 ```java
-NextIMU imu = new NextIMU(); // Defaults to the configuration name "imu"
+// Defaults to the configuration name "imu"
+NextIMU imu = new NextIMU();
 
-NextIMU imu = new NextIMU("imu"); // Using a custom configuration name
+// Using a custom configuration name
+NextIMU imu = new NextIMU("imu");
 ```
 </TabItem>
 </Tabs>
