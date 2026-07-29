@@ -12,8 +12,11 @@ export default defineConfig({
           title: 'NextFTC',
           head: [
              {
+                //Look at /public/scripts/external-links thats where the thing happens
                 tag: 'script',
-                src: '/scripts/external-links.js',
+                attrs: {
+                   src: '/scripts/external-links.js',
+                },
              },
           ],
           logo: {
