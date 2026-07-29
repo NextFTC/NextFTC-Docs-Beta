@@ -5,12 +5,20 @@ import starlightThemeGalaxy from 'starlight-theme-galaxy';
 import starlightSidebarTopics from 'starlight-sidebar-topics';
 import starlightLinksValidator from 'starlight-links-validator';
 
-// https://astro.build/config
 export default defineConfig({
     site: 'https://beta.nextftc.dev',
     integrations: [
        starlight({
           title: 'NextFTC',
+          head: [
+             {
+                //Look at /public/scripts/external-links thats where the thing happens
+                tag: 'script',
+                attrs: {
+                   src: '/scripts/external-links.js',
+                },
+             },
+          ],
           logo: {
              light: './src/assets/nextftc-banner-light.png',
              dark: './src/assets/nextftc-banner-dark.png',
