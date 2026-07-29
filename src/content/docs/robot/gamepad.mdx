@@ -14,57 +14,51 @@ bind controller input directly to Ivy commands without manually polling the game
 ## Construction
 
 `CommandGamepad` takes the `Gamepad` instance to wrap, and an optional `EventLoop` to bind its
-triggers to. If no event loop is provided, it defaults to `Trigger.defaultEventLoop`.
+triggers to.
+If no event loop is provided, it defaults to `Trigger.defaultEventLoop`.
 
 <Tabs syncKey="language">
-<TabItem label="Kotlin">
-```kotlin
-val driver = CommandGamepad(gamepad = gamepad1)
-```
-</TabItem>
-<TabItem label="Java">
-```java
-CommandGamepad driver = new CommandGamepad(gamepad1);
-```
-</TabItem>
+  <TabItem label="Kotlin">
+    ```kotlin val driver = CommandGamepad(gamepad = gamepad1) ```
+  </TabItem>
+  <TabItem label="Java">
+    ```java CommandGamepad driver = new CommandGamepad(gamepad1); ```
+  </TabItem>
 </Tabs>
 
 ## Buttons
 
-Each button is exposed as a `Trigger` that is true while the button is held down. Button names
+Each button is exposed as a `Trigger` that is true while the button is held down.
+Button names
 follow Xbox-style naming (`a`, `b`, `x`, `y`), with PlayStation-style aliases (`cross`, `circle`,
 `square`, `triangle`) mapped to the same underlying inputs.
 
-| Property         | True while...                          |
-| ----------------- | --------------------------------------- |
-| `a` / `cross`      | A (cross) is held                       |
-| `b` / `circle`     | B (circle) is held                      |
-| `x` / `square`     | X (square) is held                      |
-| `y` / `triangle`   | Y (triangle) is held                    |
-| `leftBumper`       | Left bumper is held                     |
-| `rightBumper`      | Right bumper is held                    |
-| `dpadUp`           | D-pad up is held                        |
-| `dpadDown`         | D-pad down is held                      |
-| `dpadLeft`         | D-pad left is held                      |
-| `dpadRight`        | D-pad right is held                     |
-| `back`             | Back button is held                     |
-| `start`            | Start button is held                    |
-| `leftStickButton`  | Left stick is clicked in                |
-| `rightStickButton` | Right stick is clicked in               |
+| Property           | True while...             |
+| ------------------ | ------------------------- |
+| `a` / `cross`      | A (cross) is held         |
+| `b` / `circle`     | B (circle) is held        |
+| `x` / `square`     | X (square) is held        |
+| `y` / `triangle`   | Y (triangle) is held      |
+| `leftBumper`       | Left bumper is held       |
+| `rightBumper`      | Right bumper is held      |
+| `dpadUp`           | D-pad up is held          |
+| `dpadDown`         | D-pad down is held        |
+| `dpadLeft`         | D-pad left is held        |
+| `dpadRight`        | D-pad right is held       |
+| `back`             | Back button is held       |
+| `start`            | Start button is held      |
+| `leftStickButton`  | Left stick is clicked in  |
+| `rightStickButton` | Right stick is clicked in |
 
 <Tabs syncKey="language">
-<TabItem label="Kotlin">
-```kotlin
-driver.a.onTrue(claw.close())
-driver.leftBumper.whileTrue(intake.run())
-```
-</TabItem>
-<TabItem label="Java">
-```java
-driver.a().onTrue(claw.close());
-driver.leftBumper().whileTrue(intake.run());
-```
-</TabItem>
+  <TabItem label="Kotlin">
+    ```kotlin driver.a.onTrue(claw.close())
+    driver.leftBumper.whileTrue(intake.run()) ```
+  </TabItem>
+  <TabItem label="Java">
+    ```java driver.a().onTrue(claw.close());
+    driver.leftBumper().whileTrue(intake.run()); ```
+  </TabItem>
 </Tabs>
 
 ## Sticks and analog triggers
@@ -72,28 +66,24 @@ driver.leftBumper().whileTrue(intake.run());
 Stick axes and the analog triggers are exposed as `RangeTrigger`s, giving you both the raw analog
 value and threshold-based triggers derived from it.
 
-| Property       | Value represents                                |
-| --------------- | ------------------------------------------------ |
-| `leftStickX`    | How far the left stick is moved on the x-axis     |
-| `leftStickY`    | How far the left stick is moved on the y-axis     |
-| `rightStickX`   | How far the right stick is moved on the x-axis    |
-| `rightStickY`   | How far the right stick is moved on the y-axis    |
-| `leftTrigger`   | How far the left analog trigger is pressed        |
-| `rightTrigger`  | How far the right analog trigger is pressed       |
+| Property       | Value represents                               |
+| -------------- | ---------------------------------------------- |
+| `leftStickX`   | How far the left stick is moved on the x-axis  |
+| `leftStickY`   | How far the left stick is moved on the y-axis  |
+| `rightStickX`  | How far the right stick is moved on the x-axis |
+| `rightStickY`  | How far the right stick is moved on the y-axis |
+| `leftTrigger`  | How far the left analog trigger is pressed     |
+| `rightTrigger` | How far the right analog trigger is pressed    |
 
 <Tabs syncKey="language">
-<TabItem label="Kotlin">
-```kotlin
-driver.rightTrigger.isOver(0.5).onTrue(intake.run())
-val forward = driver.leftStickY.value
-```
-</TabItem>
-<TabItem label="Java">
-```java
-driver.rightTrigger().isOver(0.5).onTrue(intake.run());
-double forward = driver.leftStickY().getValue();
-```
-</TabItem>
+  <TabItem label="Kotlin">
+    ```kotlin driver.rightTrigger.isOver(0.5).onTrue(intake.run()) val forward =
+    driver.leftStickY.value ```
+  </TabItem>
+  <TabItem label="Java">
+    ```java driver.rightTrigger().isOver(0.5).onTrue(intake.run()); double
+    forward = driver.leftStickY().getValue(); ```
+  </TabItem>
 </Tabs>
 
 See [Triggers and RangeTriggers](/reference/triggers) for the full list of binding methods
