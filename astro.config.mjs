@@ -4,10 +4,21 @@ import starlight from '@astrojs/starlight';
 import starlightThemeGalaxy from 'starlight-theme-galaxy';
 import starlightSidebarTopics from 'starlight-sidebar-topics';
 import starlightLinksValidator from 'starlight-links-validator';
+import remarkExternalLinks from 'remark-external-links';
 
-// https://astro.build/config
 export default defineConfig({
     site: 'https://beta.nextftc.dev',
+    markdown: {
+        remarkPlugins: [
+            [
+                remarkExternalLinks,
+                {
+                    target: '_blank',
+                    rel: ['noopener', 'noreferrer'],
+                },
+            ],
+        ],
+    },
     integrations: [
        starlight({
           title: 'NextFTC',
