@@ -1,0 +1,78 @@
+---
+title: Robot Project Structure
+description: How NextFTC discovers your NextRobot and OpModes, and how to organize a project around it.
+sidebar:
+  order: 6
+---
+
+import { Aside, FileTree } from "@astrojs/starlight/components";
+
+NextFTC doesn't require a specific package layout for your robot code.
+There's no "TeamCode structure" it enforces;
+instead, it uses runtime classpath scanning (via the Sinister/Sloth scanning library) to find your [`NextRobot`](/robot/nextrobot/) and [`NextOpMode`](/robot/nextopmode/) classes wherever they live in your project.
+This page explains how that discovery works,
+so you understand what makes a class "visible" to NextFTC.
+
+## How `NextRobot` is discovered
+
+NextFTC scans your project for a class that implements `NextRobot`, and picks it up automatically if:
+
+- it's `public`,
+- it's not abstract,
+- it's not annotated `@Disabled`, and
+- it has either a public no-arg constructor, or (in Kotlin) is declared as a singleton `object`.
+
+The no-arg constructor is the recommended path for both Kotlin and Java as it's the more consistent option across both languages.
+Exactly one qualifying `NextRobot` should exist in your project;
+if none or more than one is found, NextFTC will fail loudly rather than guess.
+
+## How `NextOpMode`s are discovered
+
+Every `public`, non-abstract, non-`@Disabled` subclass of `NextOpMode` annotated with `@NextTeleop` or
+`@NextAutonomous` is automatically registered with the Driver Station — you never call an SDK registration
+method yourself.
+
+To construct your OpMode, NextFTC looks for:
+
+1. A constructor taking a single parameter matching (or a supertype of) your discovered `NextRobot` type
+   if found, your discovered robot instance is passed in automatically.
+2. Otherwise, a public no-arg constructor.
+
+This is why the idiomatic `NextOpMode` subclass looks like this; the robot parameter is injected for you,
+so you never construct it yourself:
+
+```kotlin
+class MyTeleop(robot: MyRobot) : NextOpMode(robot)
+```
+
+## Suggested (not required) layout
+
+Since nothing about this is enforced, organize your code however makes sense for your team.
+A layout that keeps things easy to find:
+
+<FileTree>
+
+- org.firstinspires.ftc.teamcode
+  - Robot.java
+  - mechanisms
+    - Arm.java
+    - Intake.java
+  - opmodes
+    - auto
+      - CloseAuto.java
+      - FarAuto.java
+    - teleop
+      - OneDriverTeleop.java
+
+</FileTree>
+
+<Aside type="tip">
+  Because discovery is based entirely on interfaces and annotations (not
+  location) you can freely reorganize this as your project grows without
+  breaking anything.
+</Aside>
+
+## See also
+
+- [`NextRobot`](/robot/nextrobot/) for declaring your robot and its mechanisms.
+- [`NextOpMode`](/robot/nextopmode/) for declaring OpModes and the `@NextTeleop`/`@NextAutonomous` annotations.
