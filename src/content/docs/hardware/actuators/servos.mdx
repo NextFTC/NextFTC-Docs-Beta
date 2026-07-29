@@ -11,21 +11,25 @@ import { Tabs, TabItem } from '@astrojs/starlight/components';
 
 ## Creating a NextServo
 
-There are three ways to construct a `NextServo`, depending on what you desire.
+There are two main ways to construct a `NextServo`, depending on what you desire.
 
 <Tabs syncKey="language">
 <TabItem label="Kotlin">
 ```kotlin
-val armServo = NextServo(RobotController.controlHub, 0) // By Lynx Module and port, recommended
+ // By Lynx Module and port, recommended
+val armServo = NextServo(RobotController.controlHub, 0)
 
-val armServo = NextServo("armServo") // Using your configuration name
+// Using a configuration name
+val armServo = NextServo("armServo")
 ```
 </TabItem>
 <TabItem label="Java">
 ```java
-NextServo armServo = new NextServo(RobotController.getControlHub(), 0); // By Lynx Module and port, recommended
+ // By Lynx Module and port, recommended
+NextServo armServo = new NextServo(RobotController.getControlHub(), 0);
 
-NextServo armServo = new NextServo("armServo"); // Using your configuration name
+// Using a configuration name
+NextServo armServo = new NextServo("armServo");
 ```
 </TabItem>
 </Tabs>

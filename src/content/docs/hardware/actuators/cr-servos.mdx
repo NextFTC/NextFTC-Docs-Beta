@@ -16,16 +16,20 @@ There are two ways to construct a `NextCRServo`, depending on what you desire.
 <Tabs syncKey="language">
 <TabItem label="Kotlin">
 ```kotlin
-val intakeServo = NextCRServo(RobotController.controlHub, 0) // By Lynx Module and port, recommended
+// By Lynx Module and port, recommended
+val intakeServo = NextCRServo(RobotController.controlHub, 0)
 
-val intakeServo = NextCRServo("intakeServo") // Using your configuration name
+// Using a configuration name
+val intakeServo = NextCRServo("intakeServo")
 ```
 </TabItem>
 <TabItem label="Java">
 ```java
-NextCRServo intakeServo = new NextCRServo(RobotController.getControlHub(), 0); // By Lynx Module and port, recommended
+// By Lynx Module and port, recommended
+NextCRServo intakeServo = new NextCRServo(RobotController.getControlHub(), 0);
 
-NextCRServo intakeServo = new NextCRServo("intakeServo"); // Using your configuration name
+// Using a configuration name
+NextCRServo intakeServo = new NextCRServo("intakeServo");
 ```
 </TabItem>
 </Tabs>
