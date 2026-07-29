@@ -208,4 +208,17 @@ myFollowerMotor.follow(myLeaderMotor, Direction.REVERSE)
 </Tabs>
 
 ### `Direction`
+You can set the `Direction` property of `NextMotor`'s to control the direction that the motor rotates in.
+
+| Direction Type | Description |
+|---|---|
+| Direction.FORWARD | The motor moves forward (Clockwise) |
+| Direction.REVERSE | The motor spins in the opposite direction (Counter-Clockwise) |
+
 ### `ZeroPowerBehaviour`
+The `ZeroPowerBehaviour` property allows you to control how the motor reacts when it is given a `throttle` of 0
+
+| ZeroPowerBehaviour Type | Description |
+|---|---|
+| ZeroPowerBehaviour.BRAKE | Actively stops the motor when given a power of 0 |
+| ZeroPowerBehaviour.FLOAT | Allows the motor to naturally spin and eventually stop by itself |
