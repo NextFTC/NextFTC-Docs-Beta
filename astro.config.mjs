@@ -4,24 +4,18 @@ import starlight from '@astrojs/starlight';
 import starlightThemeGalaxy from 'starlight-theme-galaxy';
 import starlightSidebarTopics from 'starlight-sidebar-topics';
 import starlightLinksValidator from 'starlight-links-validator';
-import remarkExternalLinks from 'remark-external-links';
 
 export default defineConfig({
     site: 'https://beta.nextftc.dev',
-    markdown: {
-        remarkPlugins: [
-            [
-                remarkExternalLinks,
-                {
-                    target: '_blank',
-                    rel: ['noopener', 'noreferrer'],
-                },
-            ],
-        ],
-    },
     integrations: [
        starlight({
           title: 'NextFTC',
+          head: [
+             {
+                tag: 'script',
+                src: '/scripts/external-links.js',
+             },
+          ],
           logo: {
              light: './src/assets/nextftc-banner-light.png',
              dark: './src/assets/nextftc-banner-dark.png',
