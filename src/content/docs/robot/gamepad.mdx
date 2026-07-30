@@ -4,7 +4,6 @@ description: Wrapping a standard FTC Gamepad to expose its buttons and sticks as
 sidebar:
   order: 4
 ---
-
 import { Tabs, TabItem } from "@astrojs/starlight/components";
 
 `CommandGamepad` wraps a standard FTC `Gamepad` and exposes every button, bumper, d-pad direction,
@@ -19,18 +18,21 @@ If no event loop is provided, it defaults to `Trigger.defaultEventLoop`.
 
 <Tabs syncKey="language">
   <TabItem label="Kotlin">
-    ```kotlin val driver = CommandGamepad(gamepad = gamepad1) ```
+    ```kotlin
+    val driver = CommandGamepad(gamepad = gamepad1)
+    ```
   </TabItem>
   <TabItem label="Java">
-    ```java CommandGamepad driver = new CommandGamepad(gamepad1); ```
+    ```java
+    CommandGamepad driver = new CommandGamepad(gamepad1);
+    ```
   </TabItem>
 </Tabs>
 
 ## Buttons
 
 Each button is exposed as a `Trigger` that is true while the button is held down.
-Button names
-follow Xbox-style naming (`a`, `b`, `x`, `y`), with PlayStation-style aliases (`cross`, `circle`,
+Button names follow Xbox-style naming (`a`, `b`, `x`, `y`), with PlayStation-style aliases (`cross`, `circle`,
 `square`, `triangle`) mapped to the same underlying inputs.
 
 | Property           | True while...             |
@@ -52,12 +54,16 @@ follow Xbox-style naming (`a`, `b`, `x`, `y`), with PlayStation-style aliases (`
 
 <Tabs syncKey="language">
   <TabItem label="Kotlin">
-    ```kotlin driver.a.onTrue(claw.close())
-    driver.leftBumper.whileTrue(intake.run()) ```
+    ```kotlin
+    driver.a.onTrue(claw.close())
+    driver.leftBumper.whileTrue(intake.run())
+    ```
   </TabItem>
   <TabItem label="Java">
-    ```java driver.a().onTrue(claw.close());
-    driver.leftBumper().whileTrue(intake.run()); ```
+    ```java
+    driver.a().onTrue(claw.close());
+    driver.leftBumper().whileTrue(intake.run());
+    ```
   </TabItem>
 </Tabs>
 
@@ -77,12 +83,16 @@ value and threshold-based triggers derived from it.
 
 <Tabs syncKey="language">
   <TabItem label="Kotlin">
-    ```kotlin driver.rightTrigger.isOver(0.5).onTrue(intake.run()) val forward =
-    driver.leftStickY.value ```
+    ```kotlin
+    driver.rightTrigger.isOver(0.5).onTrue(intake.run())
+    val forward = driver.leftStickY.value
+    ```
   </TabItem>
   <TabItem label="Java">
-    ```java driver.rightTrigger().isOver(0.5).onTrue(intake.run()); double
-    forward = driver.leftStickY().getValue(); ```
+    ```java
+    driver.rightTrigger().isOver(0.5).onTrue(intake.run());
+    double forward = driver.leftStickY().getValue();
+    ```
   </TabItem>
 </Tabs>
 
