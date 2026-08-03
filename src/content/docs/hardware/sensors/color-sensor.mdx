@@ -170,9 +170,9 @@ val sameColor = NextColor.rgb(lime.red, lime.green, lime.blue)
 <TabItem label="Java">
 
 ```java
-NextColor lime = NextColor.hsv(100f, 0.9f, 0.85f);
+NextColor lime = NextColor.Companion.hsv(100f, 0.9f, 0.85f);
 
-NextColor sameColor = NextColor.rgb(lime.getRed(), lime.getGreen(), lime.getBlue());
+NextColor sameColor = NextColor.Companion.rgb(lime.getRed(), lime.getGreen(), lime.getBlue());
 ```
 
 </TabItem>
