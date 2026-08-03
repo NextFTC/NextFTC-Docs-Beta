@@ -22,7 +22,7 @@ val armServo = NextFeedbackServo("armServo", NextAnalogInput("armEncoder"))
 // By Lynx Module and port
 val armServo = NextFeedbackServo(RobotController.expansionHub, 0, NextAnalogInput(RobotController.expansionHub, 0))
 
-````
+```
 </TabItem>
 <TabItem label="Java">
 ```java
@@ -31,8 +31,7 @@ NextFeedbackServo armServo = new NextFeedbackServo("armServo", new NextAnalogInp
 
 // By Lynx Module and port
 NextFeedbackServo armServo = new NextFeedbackServo(RobotController.getExpansionHub(), 0, new NextAnalogInput(RobotController.getExpansionHub(), 0));
-````
-
+```
 </TabItem>
 </Tabs>
 
@@ -47,7 +46,7 @@ val customFeedback = AnalogFeedback(maxVoltage = 3.3.volts) { myAnalogInput.volt
 
 val armServo = NextFeedbackServo("armServo", customFeedback)
 
-````
+```
 </TabItem>
 <TabItem label="Java">
 ```java
@@ -56,8 +55,7 @@ AnalogInput myAnalogInput = hardwareMap.get(AnalogInput.class, "armEncoder");
 AnalogFeedback customFeedback = new AnalogFeedback(3.3.volts, () -> myAnalogInput.getVoltage());
 
 NextFeedbackServo armServo = new NextFeedbackServo("armServo", customFeedback);
-````
-
+```
 </TabItem>
 </Tabs>
 
@@ -69,9 +67,13 @@ The servo's actual physical angle, read from the analog feedback input and retur
 
 <Tabs syncKey="language">
   <TabItem label="Kotlin">
-    ```kotlin val currentAngle = armServo.angle ```
+    ```kotlin
+    val currentAngle = armServo.angle
+    ```
   </TabItem>
   <TabItem label="Java">
-    ```java Angle currentAngle = armServo.getAngle(); ```
+    ```java
+    Angle currentAngle = armServo.getAngle();
+    ```
   </TabItem>
 </Tabs>
