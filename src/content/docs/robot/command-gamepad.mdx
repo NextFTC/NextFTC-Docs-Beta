@@ -2,33 +2,33 @@
 title: Command Gamepad
 description: Mapping gamepad buttons to Triggers with CommandGamepad
 sidebar:
-    order: 1
+  order: 1
 ---
 
-import { Tabs, TabItem } from '@astrojs/starlight/components';
+import { Tabs, TabItem } from "@astrojs/starlight/components";
 
-`CommandGamepad` wraps the standard FTC `Gamepad` and exposes its buttons and sticks as command-based `Trigger`s. This lets you map controller inputs directly to commands using the WPILib-style Trigger API.
+`CommandGamepad` wraps the standard FTC `Gamepad` and exposes its buttons and sticks as command-based `Trigger`s.
+This lets you map controller inputs directly to commands using the WPILib-style Trigger API.
 
 ## Creating a CommandGamepad
 
 <Tabs syncKey="language">
-<TabItem label="Kotlin">
-```kotlin
-val gp1 = CommandGamepad(gamepad = gamepad1)
-```
-</TabItem>
-<TabItem label="Java">
-```java
-CommandGamepad gp1 = new CommandGamepad(Trigger.Companion.getDefaultEventLoop(), gamepad1);
-```
-</TabItem>
+  <TabItem label="Kotlin">
+    ```kotlin val gp1 = CommandGamepad(gamepad = gamepad1) ```
+  </TabItem>
+  <TabItem label="Java">
+    ```java CommandGamepad gp1 = new
+    CommandGamepad(Trigger.Companion.getDefaultEventLoop(), gamepad1); ```
+  </TabItem>
 </Tabs>
 
-`CommandGamepad` accepts an optional `eventLoop` parameter, defaulting to `Trigger.defaultEventLoop`. You generally won't need to override it unless you're managing multiple event loops.
+`CommandGamepad` accepts an optional `eventLoop` parameter, defaulting to `Trigger.defaultEventLoop`.
+You generally won't need to override it unless you're managing multiple event loops.
 
 ## Usage
 
 Every `button` is exposed as a `Trigger`, which you can bind to commands with methods like `onTrue()` or `onFalse()` etc.
+
 <Tabs syncKey="language">
 <TabItem label="Kotlin">
 ```kotlin
@@ -41,7 +41,7 @@ gp1.circle.onFalse(robot.intake.off())
 gp1.circle().onTrue(robot.intake.on());
 gp1.circle().onFalse(robot.intake.off());
 
-```
+````
 </TabItem>
 </Tabs>
 
@@ -53,7 +53,8 @@ Are exposed as `RangeTrigger`s instead of plain `Trigger`s, since they report an
 <TabItem label="Kotlin">
 ```kotlin
 gp1.rightTrigger.isOver(0.2).onTrue(robot.launcher.launch())
-```
+````
+
 </TabItem>
 <TabItem label="Java">
 ```java
