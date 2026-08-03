@@ -1,0 +1,105 @@
+---
+title: Triggers and RangeTriggers
+description: Binding gamepad input directly to commands with Trigger and RangeTrigger.
+sidebar:
+  order: 5
+---
+
+import { Tabs, TabItem } from "@astrojs/starlight/components";
+
+Instead of polling `gamepad1.a` in a loop and manually deciding when to start or stop a command,
+NextFTC lets you bind gamepad input directly to commands using `Trigger` and `RangeTrigger`.
+Once bound,
+these are polled automatically every loop, so no manual wiring is required beyond the binding itself.
+
+The examples below use a `driver` object of type `CommandGamepad`,
+which wraps a gamepad and exposes each of its buttons and sticks as a `Trigger` or `RangeTrigger`.
+See that page for how to construct one.
+
+## `Trigger`
+
+A `Trigger` wraps a boolean condition and lets you bind commands to how that condition changes over time:
+
+| Method          | Starts the command when...                              | Also stops/cancels it      |
+| --------------- | ------------------------------------------------------- | -------------------------- |
+| `onTrue`        | condition goes false → true                             | —                          |
+| `onFalse`       | condition goes true → false                             | —                          |
+| `onChange`      | condition changes at all                                | —                          |
+| `whileTrue`     | condition goes false → true                             | when it goes back to false |
+| `whileFalse`    | condition goes true → false                             | when it goes back to true  |
+| `toggleOnTrue`  | condition goes false → true (toggles running/cancelled) | —                          |
+| `toggleOnFalse` | condition goes true → false (toggles running/cancelled) | —                          |
+
+<Tabs syncKey="language">
+<TabItem label="Kotlin">
+
+```kotlin
+driver.a.onTrue(claw.close())
+driver.b.whileTrue(intake.run())
+```
+
+</TabItem>
+<TabItem label="Java">
+
+```java
+driver.a().onTrue(claw.close());
+driver.b().whileTrue(intake.run());
+```
+
+</TabItem>
+</Tabs>
+
+Triggers can be composed with `and`, `or`, and `negate`,
+and refined with `debounce(seconds)` (ignore brief flickers) and `multiPress(requiredPresses, windowTime)` (e.g. double-press detection):
+
+<Tabs syncKey="language">
+<TabItem label="Kotlin">
+
+```kotlin
+driver.a.and(driver.rightBumper).onTrue(climb.start())
+```
+
+</TabItem>
+<TabItem label="Java">
+
+```java
+driver.a().and(driver.rightBumper()).onTrue(climb.start());
+```
+
+</TabItem>
+</Tabs>
+
+## `RangeTrigger`
+
+A `RangeTrigger` wraps an analog value (a stick axis or an analog trigger) and lets you derive a `Trigger` from a threshold or range,
+in addition to reading the raw value directly:
+
+| Method                    | Active when...                    |
+| ------------------------- | --------------------------------- |
+| `isOver(threshold)`       | value is greater than `threshold` |
+| `isUnder(threshold)`      | value is less than `threshold`    |
+| `isBetween(lower, upper)` | value is within `[lower, upper]`  |
+
+<Tabs syncKey="language">
+<TabItem label="Kotlin">
+
+```kotlin
+driver.rightTrigger.isOver(0.5).onTrue(intake.run())
+
+val rawValue = driver.leftStickY.value
+```
+
+</TabItem>
+<TabItem label="Java">
+
+```java
+driver.rightTrigger().isOver(0.5).onTrue(intake.run());
+
+double rawValue = driver.leftStickY().getValue();
+```
+
+</TabItem>
+</Tabs>
+
+The result of `isOver`/`isUnder`/`isBetween` is a regular `Trigger`,
+so all of the `Trigger` binding methods above are available on it too.

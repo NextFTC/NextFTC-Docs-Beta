@@ -2,10 +2,10 @@
 title: Color Sensors
 description: Reading color and distance with NextColorDistanceSensor
 sidebar:
-    order: 2
+  order: 2
 ---
 
-import { Tabs, TabItem } from '@astrojs/starlight/components';
+import { Tabs, TabItem } from "@astrojs/starlight/components";
 
 `NextColorDistanceSensor` combines a color sensor and an optional distance sensor into one class.
 
@@ -13,44 +13,57 @@ import { Tabs, TabItem } from '@astrojs/starlight/components';
 
 <Tabs syncKey="language">
 <TabItem label="Kotlin">
-```kotlin
-val sensor = NextColorDistanceSensor(RobotController.controlHub, 0) // By Lynx Module and I2C bus, recommended
 
-val sensor = NextColorDistanceSensor("colorSensor") // Using your configuration name
+```kotlin
+// By Lynx Module and I2C bus, recommended
+val sensor = NextColorDistanceSensor(RobotController.controlHub, 0)
+
+// Using your configuration name
+val sensor = NextColorDistanceSensor("colorSensor")
 ```
+
 </TabItem>
 <TabItem label="Java">
-```java
-NextColorDistanceSensor sensor = new NextColorDistanceSensor(RobotController.getControlHub(), 0); // By Lynx Module and I2C bus, recommended
 
-NextColorDistanceSensor sensor = new NextColorDistanceSensor("colorSensor"); // Using your configuration name
+```java
+// By Lynx Module and I2C bus, recommended
+NextColorDistanceSensor sensor = new NextColorDistanceSensor(RobotController.controlHub(), 0);
+
+// Using your configuration name
+NextColorDistanceSensor sensor = new NextColorDistanceSensor("colorSensor");
 ```
+
 </TabItem>
 </Tabs>
 
 Both constructors accept an optional `hasDistance` parameter:
 
-| Parameter | Type | Default | Description |
-|---|---|---|---|
+| Parameter     | Type      | Default | Description                                                    |
+| ------------- | --------- | ------- | -------------------------------------------------------------- |
 | `hasDistance` | `Boolean` | `false` | Whether to also create a distance sensor from the same sensor. |
-
 
 ## Usage
 
 ### `update()`
 
-Reads the color sensor (and distance sensor, if present) and refreshes the cache. Call this once per loop, before reading anything. It's recommended to put this in your `periodic` for your `Mechanism`..
+Reads the color sensor (and distance sensor, if present) and refreshes the cache.
+Call this once per loop, before reading anything.
+It's recommended to put this in your `periodic` for your `Mechanism`..
 
 <Tabs syncKey="language">
 <TabItem label="Kotlin">
+
 ```kotlin
 sensor.update()
 ```
+
 </TabItem>
 <TabItem label="Java">
+
 ```java
 sensor.update();
 ```
+
 </TabItem>
 </Tabs>
 
@@ -60,14 +73,18 @@ True if the distance sensor senses an object within `threshold`, in the given un
 
 <Tabs syncKey="language">
 <TabItem label="Kotlin">
+
 ```kotlin
 if (sensor.isWithinDistance(4.0)) { ... } //defaults to CM
 ```
+
 </TabItem>
 <TabItem label="Java">
+
 ```java
 if (sensor.isWithinDistance(4.0)) { ... } //defaults to CM
 ```
+
 </TabItem>
 </Tabs>
 
@@ -77,14 +94,18 @@ True if the cached color reading matches the given `ColorProfile`.
 
 <Tabs syncKey="language">
 <TabItem label="Kotlin">
+
 ```kotlin
 if (sensor.isColor(green)) { ... }
 ```
+
 </TabItem>
 <TabItem label="Java">
+
 ```java
 if (sensor.isColor(green)) { ... }
 ```
+
 </TabItem>
 </Tabs>
 
@@ -94,61 +115,77 @@ True if the cached color reading matches `profile` and an object is within `thre
 
 <Tabs syncKey="language">
 <TabItem label="Kotlin">
+
 ```kotlin
 if (sensor.isColorWithinDistance(green, 4.0)) { ... } //defaults to CM
 ```
+
 </TabItem>
 <TabItem label="Java">
+
 ```java
 if (sensor.isColorWithinDistance(green, 4.0)) { ... } //defaults to CM
 ```
+
 </TabItem>
 </Tabs>
 
 ### `debug()`
 
-Single-line telemetry string showing the current RGB, HSV, and distance readings. Useful for calibrating `ColorProfile`s.
+Single-line telemetry string showing the current RGB, HSV, and distance readings.
+Useful for calibrating `ColorProfile`s.
 
 <Tabs syncKey="language">
 <TabItem label="Kotlin">
+
 ```kotlin
 telemetry.addLine(sensor.debug())
 ```
+
 </TabItem>
 <TabItem label="Java">
+
 ```java
 telemetry.addLine(sensor.debug());
 ```
+
 </TabItem>
 </Tabs>
 
 ## NextColor
 
-`NextColor` stores a color, either as RGB or HSV. HSV is recommended for most cases, since it's more stable under different lighting conditions.
+`NextColor` stores a color, either as RGB or HSV.
+HSV is recommended for most cases, since it's more stable under different lighting conditions.
 
 <Tabs syncKey="language">
 <TabItem label="Kotlin">
+
 ```kotlin
 val lime = NextColor.hsv(100f, 0.9f, 0.85f)
 
 val sameColor = NextColor.rgb(lime.red, lime.green, lime.blue)
 ```
+
 </TabItem>
 <TabItem label="Java">
+
 ```java
 NextColor lime = NextColor.hsv(100f, 0.9f, 0.85f);
 
 NextColor sameColor = NextColor.rgb(lime.getRed(), lime.getGreen(), lime.getBlue());
 ```
+
 </TabItem>
 </Tabs>
 
 ## ColorProfile
 
-`ColorProfile` describes a target color and the tolerances, to match your readings. These can be used for `isColor()` or `isColorWithinDistance()`.
+`ColorProfile` describes a target color and the tolerances, to match your readings.
+These can be used for `isColor()` or `isColorWithinDistance()`.
 
 <Tabs syncKey="language">
 <TabItem label="Kotlin">
+
 ```kotlin
 val green = ColorProfile(
     space = ColorSpace.HSV,
@@ -156,8 +193,10 @@ val green = ColorProfile(
     tolerance = NextColor.hsv(20f, 0.3f, 1f),
 )
 ```
+
 </TabItem>
 <TabItem label="Java">
+
 ```java
 ColorProfile green = new ColorProfile(
     ColorSpace.HSV,
@@ -165,11 +204,12 @@ ColorProfile green = new ColorProfile(
     NextColor.hsv(20f, 0.3f, 1f)
 );
 ```
+
 </TabItem>
 </Tabs>
 
-| Parameter | Type | Description |
-|---|---|---|
-| `space` | `ColorSpace` | The color space to compare in: `RGB` or `HSV`. |
-| `color` | `NextColor` | The target color to match against. |
-| `tolerance` | `NextColor` | How far each channel can deviate from `color` and still count as a match. |
+| Parameter   | Type         | Description                                                               |
+| ----------- | ------------ | ------------------------------------------------------------------------- |
+| `space`     | `ColorSpace` | The color space to compare in: `RGB` or `HSV`.                            |
+| `color`     | `NextColor`  | The target color to match against.                                        |
+| `tolerance` | `NextColor`  | How far each channel can deviate from `color` and still count as a match. |

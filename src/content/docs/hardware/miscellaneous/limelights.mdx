@@ -2,26 +2,33 @@
 title: Limelights
 description: Reading AprilTags and pose data with NextLimelight
 sidebar:
-    order: 1
+  order: 1
 ---
 
-import { Tabs, TabItem } from '@astrojs/starlight/components';
+import { Tabs, TabItem } from "@astrojs/starlight/components";
 
-`NextLimelight` is a wrapper around the [Limelight3A](https://limelightvision.io/products/limelight-3a) that initializes the device lazily from the hardware map. While creating many useful methods. Any data that is not wrapped can be accessed through `camera`.
-
+`NextLimelight` is a wrapper around the [Limelight3A](https://limelightvision.io/products/limelight-3a) that initializes the device lazily from the hardware map,
+while creating many useful methods.
+Any data that is not wrapped can be accessed through `camera`.
 
 ## Creating a NextLimelight
 
 <Tabs syncKey="language">
 <TabItem label="Kotlin">
+
 ```kotlin
-val limelight = NextLimelight("limelight") // Using your configuration name
+// Using your configuration name
+val limelight = NextLimelight("limelight")
 ```
+
 </TabItem>
 <TabItem label="Java">
+
 ```java
-NextLimelight limelight = new NextLimelight("limelight"); // Using your configuration name
+// Using your configuration name
+NextLimelight limelight = new NextLimelight("limelight");
 ```
+
 </TabItem>
 </Tabs>
 
@@ -33,14 +40,18 @@ Sets the poll rate and pipeline, then starts polling, all in one call.
 
 <Tabs syncKey="language">
 <TabItem label="Kotlin">
+
 ```kotlin
 limelight.startReading(pipeline = 0, hz = 100)
 ```
+
 </TabItem>
 <TabItem label="Java">
+
 ```java
 limelight.startReading(0, 100);
 ```
+
 </TabItem>
 </Tabs>
 
@@ -50,20 +61,24 @@ Returns the straight-line distance (hypotenuse) from the robot to the AprilTag f
 
 <Tabs syncKey="language">
 <TabItem label="Kotlin">
+
 ```kotlin
 val distance = limelight.getDistance(id = 7) //Defaults to Inches
 if (distance != null) {
     // ...
 }
 ```
+
 </TabItem>
 <TabItem label="Java">
+
 ```java
 Distance distance = limelight.getDistance(Inches.INSTANCE, 7); //Defaults to Inches
 if (distance != null) {
     // ...
 }
 ```
+
 </TabItem>
 </Tabs>
 
@@ -73,20 +88,24 @@ Returns the robot's field position in [FTC coordinates](https://ftc-docs.firstin
 
 <Tabs syncKey="language">
 <TabItem label="Kotlin">
+
 ```kotlin
 val pose = limelight.getPose()
 if (pose != null) {
     // ...
 }
 ```
+
 </TabItem>
 <TabItem label="Java">
+
 ```java
 Pose2d pose = limelight.getPose();
 if (pose != null) {
     // ...
 }
 ```
+
 </TabItem>
 </Tabs>
 
@@ -96,19 +115,23 @@ Returns the robot's field position in [Pedro coordinates](https://pedropathing.c
 
 <Tabs syncKey="language">
 <TabItem label="Kotlin">
+
 ```kotlin
 val pose = limelight.getPedroPose()
 if (pose != null) {
     // ...
 }
 ```
+
 </TabItem>
 <TabItem label="Java">
+
 ```java
 Pose2d pose = limelight.getPedroPose();
 if (pose != null) {
     // ...
 }
 ```
+
 </TabItem>
 </Tabs>

@@ -2,39 +2,49 @@
 title: Digital Sensors
 description: Reading digital sensors with NextDigitalSensor
 sidebar:
-    order: 3
+  order: 3
 ---
 
-import { Tabs, TabItem } from '@astrojs/starlight/components';
+import { Tabs, TabItem } from "@astrojs/starlight/components";
 
 `NextDigitalSensor` is a lightweight wrapper around a `DigitalChannel` for reading digital sensors like limit switches, magnetic switches, and beam breaks.
 
-Most digital sensors are active low, meaning they read `false` when triggered (switch pressed, magnet present, beam broken) and `true` when idle. This wrapper handles that inversion for you, so `isTriggered` always means what you'd expect.
+Most digital sensors are active low, meaning they read `false` when triggered (switch pressed, magnet present, beam broken) and `true` when idle.
+This wrapper handles that inversion for you, so `isTriggered` always means what you'd expect.
 
 ## Creating a NextDigitalSensor
 
 <Tabs syncKey="language">
 <TabItem label="Kotlin">
-```kotlin
-val beamBreak = NextDigitalSensor(RobotController.controlHub, 0) // By Lynx Module and port, recommended
 
-val beamBreak = NextDigitalSensor("beamBreak") // Using your configuration name
+```kotlin
+// By Lynx Module and port, recommended
+val beamBreak = NextDigitalSensor(RobotController.controlHub, 0)
+
+// Using your configuration name
+val beamBreak = NextDigitalSensor("beamBreak")
 ```
+
 </TabItem>
 <TabItem label="Java">
-```java
-NextDigitalSensor beamBreak = new NextDigitalSensor(RobotController.getControlHub(), 0); // By Lynx Module and port, recommended
 
-NextDigitalSensor beamBreak = new NextDigitalSensor("beamBreak"); // Using your configuration name
+```java
+// By Lynx Module and port, recommended
+NextDigitalSensor beamBreak = new NextDigitalSensor(RobotController.controlHub(), 0);
+
+// Using your configuration name
+NextDigitalSensor beamBreak = new NextDigitalSensor("beamBreak");
 ```
+
 </TabItem>
 </Tabs>
 
 Both constructors accept an optional `inverted` parameter:
 
-| Parameter | Type | Default | Description |
-|---|---|---|---|
-| `inverted` | `Boolean` | `true` | If true, `isTriggered` returns the opposite of the raw sensor state.
+| Parameter  | Type      | Default | Description                                                          |
+| ---------- | --------- | ------- | -------------------------------------------------------------------- |
+| `inverted` | `Boolean` | `true`  | If true, `isTriggered` returns the opposite of the raw sensor state. |
+
 ## Usage
 
 ### `isTriggered`
@@ -43,18 +53,22 @@ Both constructors accept an optional `inverted` parameter:
 
 <Tabs syncKey="language">
 <TabItem label="Kotlin">
+
 ```kotlin
 if (beamBreak.isTriggered) {
     //...
 }
 ```
+
 </TabItem>
 <TabItem label="Java">
+
 ```java
 if (beamBreak.isTriggered()) {
     //...
 }
 ```
+
 </TabItem>
 </Tabs>
 
@@ -64,14 +78,18 @@ if (beamBreak.isTriggered()) {
 
 <Tabs syncKey="language">
 <TabItem label="Kotlin">
+
 ```kotlin
 val raw = beamBreak.rawState
 ```
+
 </TabItem>
 <TabItem label="Java">
+
 ```java
 boolean raw = beamBreak.getRawState();
 ```
+
 </TabItem>
 </Tabs>
 
@@ -81,13 +99,17 @@ Returns a string of the sensor's current state, useful for telemetry or logging.
 
 <Tabs syncKey="language">
 <TabItem label="Kotlin">
+
 ```kotlin
 telemetry.addLine(beamBreak.debug())
 ```
+
 </TabItem>
 <TabItem label="Java">
+
 ```java
 telemetry.addLine(beamBreak.debug());
 ```
+
 </TabItem>
 </Tabs>

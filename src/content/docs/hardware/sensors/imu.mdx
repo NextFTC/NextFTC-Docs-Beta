@@ -2,10 +2,10 @@
 title: IMUs
 description: Reading orientation with NextIMU
 sidebar:
-    order: 5
+  order: 5
 ---
 
-import { Tabs, TabItem } from '@astrojs/starlight/components';
+import { Tabs, TabItem } from "@astrojs/starlight/components";
 
 `NextIMU` is a wrapper for the Control Hub or an `IMU` that uses lazy initialization.
 
@@ -13,18 +13,26 @@ import { Tabs, TabItem } from '@astrojs/starlight/components';
 
 <Tabs syncKey="language">
 <TabItem label="Kotlin">
-```kotlin
-val imu = NextIMU() // Defaults to the configuration name "imu"
 
-val imu = NextIMU("imu") // Using a custom configuration name
+```kotlin
+// Defaults to the configuration name "imu"
+val imu = NextIMU()
+
+// Using a custom configuration name
+val imu = NextIMU("imu")
 ```
+
 </TabItem>
 <TabItem label="Java">
-```java
-NextIMU imu = new NextIMU(); // Defaults to the configuration name "imu"
 
-NextIMU imu = new NextIMU("imu"); // Using a custom configuration name
+```java
+// Defaults to the configuration name "imu"
+NextIMU imu = new NextIMU();
+
+// Using a custom configuration name
+NextIMU imu = new NextIMU("imu");
 ```
+
 </TabItem>
 </Tabs>
 
@@ -36,14 +44,18 @@ Initializes the IMU with the given `IMU.Parameters`, such as the hub's mounting 
 
 <Tabs syncKey="language">
 <TabItem label="Kotlin">
+
 ```kotlin
 imu.initialize(IMU.Parameters(RevHubOrientationOnRobot(LogoFacingDirection.UP, UsbFacingDirection.FORWARD)))
 ```
+
 </TabItem>
 <TabItem label="Java">
+
 ```java
 imu.initialize(new IMU.Parameters(new RevHubOrientationOnRobot(LogoFacingDirection.UP, UsbFacingDirection.FORWARD)));
 ```
+
 </TabItem>
 </Tabs>
 
@@ -53,14 +65,18 @@ Resets the yaw angle to zero.
 
 <Tabs syncKey="language">
 <TabItem label="Kotlin">
+
 ```kotlin
 imu.resetYaw()
 ```
+
 </TabItem>
 <TabItem label="Java">
+
 ```java
 imu.resetYaw();
 ```
+
 </TabItem>
 </Tabs>
 
@@ -70,13 +86,17 @@ imu.resetYaw();
 
 <Tabs syncKey="language">
 <TabItem label="Kotlin">
+
 ```kotlin
 val turnRate = imu.angularVelocity
 ```
+
 </TabItem>
 <TabItem label="Java">
+
 ```java
 AngularVelocity turnRate = imu.getAngularVelocity();
 ```
+
 </TabItem>
 </Tabs>

@@ -2,10 +2,10 @@
 title: Pinpoints
 description: Reading odometry with NextPinpoint
 sidebar:
-    order: 4
+  order: 4
 ---
 
-import { Tabs, TabItem } from '@astrojs/starlight/components';
+import { Tabs, TabItem } from "@astrojs/starlight/components";
 
 `NextPinpoint` is a wrapper for the [goBILDA Pinpoint Odometry Computer](https://www.gobilda.com/pinpoint-odometry-computer-imu-sensor-fusion-for-2-wheel-odometry/) that uses lazy initialization.
 
@@ -13,38 +13,50 @@ import { Tabs, TabItem } from '@astrojs/starlight/components';
 
 <Tabs syncKey="language">
 <TabItem label="Kotlin">
-```kotlin
-val pinpoint = NextPinpoint(RobotController.controlHub, 0) // By Lynx Module and I2C bus
 
-val pinpoint = NextPinpoint("pinpoint") // Using your configuration name
+```kotlin
+// By Lynx Module and I2C bus
+val pinpoint = NextPinpoint(RobotController.controlHub, 0)
+
+// Using your configuration name
+val pinpoint = NextPinpoint("pinpoint")
 ```
+
 </TabItem>
 <TabItem label="Java">
-```java
-NextPinpoint pinpoint = new NextPinpoint(RobotController.getControlHub(), 0); // By Lynx Module and I2C bus
 
-NextPinpoint pinpoint = new NextPinpoint("pinpoint"); // Using your configuration name
+```java
+// By Lynx Module and I2C bus
+NextPinpoint pinpoint = new NextPinpoint(RobotController.controlHub(), 0);
+
+// Using your configuration name
+NextPinpoint pinpoint = new NextPinpoint("pinpoint");
 ```
+
 </TabItem>
 </Tabs>
-
 
 ## Usage
 
 ### `update()`
 
-Updates the position data from the device. Call this each loop, you can put this in your `periodic` for your `Mechanism`.
+Updates the position data from the device.
+Call this each loop, you can put this in your `periodic` for your `Mechanism`.
 
 <Tabs syncKey="language">
 <TabItem label="Kotlin">
+
 ```kotlin
 pinpoint.update()
 ```
+
 </TabItem>
 <TabItem label="Java">
+
 ```java
 pinpoint.update();
 ```
+
 </TabItem>
 </Tabs>
 
@@ -54,14 +66,18 @@ pinpoint.update();
 
 <Tabs syncKey="language">
 <TabItem label="Kotlin">
+
 ```kotlin
 val currentPose = pinpoint.pose
 ```
+
 </TabItem>
 <TabItem label="Java">
+
 ```java
 Pose2d currentPose = pinpoint.getPose();
 ```
+
 </TabItem>
 </Tabs>
 
@@ -71,14 +87,18 @@ Pose2d currentPose = pinpoint.getPose();
 
 <Tabs syncKey="language">
 <TabItem label="Kotlin">
+
 ```kotlin
 val currentVelocity = pinpoint.velocity
 ```
+
 </TabItem>
 <TabItem label="Java">
+
 ```java
 PoseVelocity2d currentVelocity = pinpoint.getVelocity();
 ```
+
 </TabItem>
 </Tabs>
 
@@ -88,13 +108,17 @@ Resets the odometry position tracking.
 
 <Tabs syncKey="language">
 <TabItem label="Kotlin">
+
 ```kotlin
 pinpoint.resetPosAndIMU()
 ```
+
 </TabItem>
 <TabItem label="Java">
+
 ```java
 pinpoint.resetPosAndIMU();
 ```
+
 </TabItem>
 </Tabs>
