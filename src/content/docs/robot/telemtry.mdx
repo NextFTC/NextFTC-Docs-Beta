@@ -20,14 +20,22 @@ If you want it to also show up somewhere else, register another backend.
 Logs a data pair, or a raw string, to every registered backend.
 
 <Tabs syncKey="language">
-  <TabItem label="Kotlin">
-    ```kotlin Telemetry.log("Arm Position", arm.position) Telemetry.log("Ready")
-    ```
-  </TabItem>
-  <TabItem label="Java">
-    ```java Telemetry.log("Arm Position", arm.getPosition());
-    Telemetry.log("Ready"); ```
-  </TabItem>
+<TabItem label="Kotlin">
+
+```kotlin
+Telemetry.log("Arm Position", arm.position)
+Telemetry.log("Ready")
+```
+
+</TabItem>
+<TabItem label="Java">
+
+```java
+Telemetry.log("Arm Position", arm.getPosition());
+Telemetry.log("Ready");
+```
+
+</TabItem>
 </Tabs>
 
 ### `update()`
@@ -35,8 +43,20 @@ Logs a data pair, or a raw string, to every registered backend.
 Sends everything you've logged out to all your backends. `TelemetryHook` already calls this for you every loop, so you usually won't need to call it yourself.
 
 <Tabs syncKey="language">
-  <TabItem label="Kotlin">```kotlin Telemetry.update() ```</TabItem>
-  <TabItem label="Java">```java Telemetry.update(); ```</TabItem>
+<TabItem label="Kotlin">
+
+```kotlin
+Telemetry.update()
+```
+
+</TabItem>
+<TabItem label="Java">
+
+```java
+Telemetry.update();
+```
+
+</TabItem>
 </Tabs>
 
 ### `addBackend(backend)`
@@ -45,12 +65,20 @@ Adds another place for your telemetry to go.
 You can pass in a `TelemetryBackend`, or a regular FTC SDK `Telemetry` instance (like the one from FTC Dashboard) and it'll be wrapped for you automatically.
 
 <Tabs syncKey="language">
-  <TabItem label="Kotlin">
-    ```kotlin Telemetry.addBackend(FtcDashboard.getInstance().telemetry) ```
-  </TabItem>
-  <TabItem label="Java">
-    ```java Telemetry.addBackend(FtcDashboard.getInstance().getTelemetry()); ```
-  </TabItem>
+<TabItem label="Kotlin">
+
+```kotlin
+Telemetry.addBackend(FtcDashboard.getInstance().telemetry)
+```
+
+</TabItem>
+<TabItem label="Java">
+
+```java
+Telemetry.addBackend(FtcDashboard.getInstance().getTelemetry());
+```
+
+</TabItem>
 </Tabs>
 
 ## Logging with FateWeaver
@@ -59,12 +87,20 @@ You can pass in a `TelemetryBackend`, or a regular FTC SDK `Telemetry` instance 
 Its `FlightRecorder` implements the standard FTC SDK `Telemetry` interface, so you can register it directly as a backend using the `addBackend(SdkTelemetry)` overload
 
 <Tabs syncKey="language">
-  <TabItem label="Kotlin">
-    ```kotlin Telemetry.addBackend(FlightRecorder) ```
-  </TabItem>
-  <TabItem label="Java">
-    ```java Telemetry.addBackend(FlightRecorder.INSTANCE); ```
-  </TabItem>
+<TabItem label="Kotlin">
+
+```kotlin
+Telemetry.addBackend(FlightRecorder)
+```
+
+</TabItem>
+<TabItem label="Java">
+
+```java
+Telemetry.addBackend(FlightRecorder.INSTANCE);
+```
+
+</TabItem>
 </Tabs>
 
 Once registered, every `Telemetry.log()` call also gets written to your FateWeaver logs, which is viewable and downloadable from the robot's web dashboard using either [`http://192.168.43.1:8080/fate`](http://192.168.43.1:8080/fate) (Control Hub) or [`http://192.168.49.1:8080/fate`](http://192.168.49.1:8080/fate) (RC phone), and openable in [AdvantageScope](https://docs.advantagescope.org/overview/installation/).
