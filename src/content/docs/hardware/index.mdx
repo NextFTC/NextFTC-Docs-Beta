@@ -23,18 +23,22 @@ or by its configuration name from the Driver Station.
 <TabItem label="Kotlin">
 
 ```kotlin
-val servo = NextServo(RobotController.controlHub, 0) // By Lynx Module and port, recommended
+// By Lynx Module and port, recommended
+val servo = NextServo(RobotController.controlHub, 0)
 
-val servo = NextServo("armServo") // Using your configuration name
+// Using your configuration name
+val servo = NextServo("armServo")
 ```
 
 </TabItem>
 <TabItem label="Java">
 
 ```java
-NextServo servo = new NextServo(RobotController.controlHub(), 0); // By Lynx Module and port, recommended
+// By Lynx Module and port, recommended
+NextServo servo = new NextServo(RobotController.controlHub(), 0);
 
-NextServo servo = new NextServo("armServo"); // Using your configuration name
+// Using your configuration name
+NextServo servo = new NextServo("armServo");
 ```
 
 </TabItem>
