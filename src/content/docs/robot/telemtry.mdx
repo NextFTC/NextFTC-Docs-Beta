@@ -21,16 +21,12 @@ Logs a data pair, or a raw string, to every registered backend.
 
 <Tabs syncKey="language">
   <TabItem label="Kotlin">
-    ```kotlin
-    Telemetry.log("Arm Position", arm.position)
-    Telemetry.log("Ready")
+    ```kotlin Telemetry.log("Arm Position", arm.position) Telemetry.log("Ready")
     ```
   </TabItem>
   <TabItem label="Java">
-    ```java
-    Telemetry.log("Arm Position", arm.getPosition());
-    Telemetry.log("Ready");
-    ```
+    ```java Telemetry.log("Arm Position", arm.getPosition());
+    Telemetry.log("Ready"); ```
   </TabItem>
 </Tabs>
 
@@ -39,16 +35,8 @@ Logs a data pair, or a raw string, to every registered backend.
 Sends everything you've logged out to all your backends. `TelemetryHook` already calls this for you every loop, so you usually won't need to call it yourself.
 
 <Tabs syncKey="language">
-  <TabItem label="Kotlin">
-    ```kotlin
-    Telemetry.update()
-    ```
-  </TabItem>
-  <TabItem label="Java">
-    ```java
-    Telemetry.update();
-    ```
-  </TabItem>
+  <TabItem label="Kotlin">```kotlin Telemetry.update() ```</TabItem>
+  <TabItem label="Java">```java Telemetry.update(); ```</TabItem>
 </Tabs>
 
 ### `addBackend(backend)`
@@ -58,14 +46,10 @@ You can pass in a `TelemetryBackend`, or a regular FTC SDK `Telemetry` instance 
 
 <Tabs syncKey="language">
   <TabItem label="Kotlin">
-    ```kotlin
-    Telemetry.addBackend(FtcDashboard.getInstance().telemetry)
-    ```
+    ```kotlin Telemetry.addBackend(FtcDashboard.getInstance().telemetry) ```
   </TabItem>
   <TabItem label="Java">
-    ```java
-    Telemetry.addBackend(FtcDashboard.getInstance().getTelemetry());
-    ```
+    ```java Telemetry.addBackend(FtcDashboard.getInstance().getTelemetry()); ```
   </TabItem>
 </Tabs>
 
@@ -76,14 +60,10 @@ Its `FlightRecorder` implements the standard FTC SDK `Telemetry` interface, so y
 
 <Tabs syncKey="language">
   <TabItem label="Kotlin">
-    ```kotlin
-    Telemetry.addBackend(FlightRecorder)
-    ```
+    ```kotlin Telemetry.addBackend(FlightRecorder) ```
   </TabItem>
   <TabItem label="Java">
-    ```java
-    Telemetry.addBackend(FlightRecorder.INSTANCE);
-    ```
+    ```java Telemetry.addBackend(FlightRecorder.INSTANCE); ```
   </TabItem>
 </Tabs>
 
