@@ -69,13 +69,14 @@ fun startDrive(gamepad1: Gamepad) {
 
 ```java
 public void startDrive(Gamepad gamepad1) {
-    DriveCommands.mecanumDrive(
-        drivetrain.frontLeft,
-        drivetrain.frontRight,
-        drivetrain.backLeft,
-        drivetrain.backRight,
-        gamepad1,
-    )();
+    DriveCommandsKt.mecanumDrive(
+            drivetrain.frontLeft,
+            drivetrain.frontRight,
+            drivetrain.backLeft,
+            drivetrain.backRight,   
+            gamepad1,
+            new MecanumKinematics()
+    ).schedule();
 }
 ```
 
