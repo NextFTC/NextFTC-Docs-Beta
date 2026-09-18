@@ -23,12 +23,15 @@ All four are plain fields on the class, so use them directly.
 Every one of these is optional.
 Override the ones you need:
 
-| Method               | Called                                           |
-| -------------------- | ------------------------------------------------ |
-| `disabledPeriodic()` | Repeatedly, while the Driver Station is in INIT. |
-| `start()`            | Once, right after the PLAY button is pressed.    |
-| `periodic()`         | Repeatedly, while the OpMode is running.         |
-| `end()`              | Once, when the OpMode finishes.                  |
+| Method                     | Called                                                 |
+| -------------------------- | ------------------------------------------------------ |
+| `disabledPeriodic()`       | Repeatedly, while the Driver Station is in INIT.       |
+| `start()`                  | Once, right after the PLAY button is pressed.          |
+| `periodic()`               | Repeatedly, while the OpMode is running.               |
+| `end()`                    | Once, when the OpMode finishes.                        |
+| `onControlHubBulkData()`   | Repeatedly, when the BulkReadHook produces data.       |
+| `onExpansionHubBulkData()` | Repeatedly, when the BulkReadHook produces data.       |
+| `onLocalizationData()`     | Repeatedly, when the PinpointHook produces data. (WIP) |
 
 <Tabs syncKey="language">
 <TabItem label="Kotlin">
@@ -39,6 +42,9 @@ class MyTeleop(robot: MyRobot) : NextOpMode(robot) {
     override fun periodic() {
         Telemetry.log("Status", "Running")
     }
+
+    //Optional. Don't override or return false to disable Blaze.
+    override fun enableBlaze() = true
 }
 ```
 
@@ -53,6 +59,12 @@ public class MyTeleop extends NextOpMode {
     @Override
     public void periodic() {
         Telemetry.log("Status", "Running");
+    }
+
+    //Optional: Don't override or return false to disable Blaze.
+    @Override
+    public boolean enableBlaze() {
+        return true;
     }
 }
 ```
@@ -109,6 +121,49 @@ public class MyTeleop extends NextOpMode {
 
 </TabItem>
 </Tabs>
+
+## `BlazeBulkReadHook`
+
+Using the BlazeFTC library, it is possible to run your code at a much higher speed than is typically possible.
+On the Control Hub or on a USB Expansion Hub, a slow mode hook can easily provide data at 500 hz. 
+For more information on how that works, check out the [BlazeFTC Readme](https://github.com/owenpmckenna/blaze_ftc).
+To take advantage of this project using NextFTC, use the following setup:
+
+<Tabs syncKey="language">
+<TabItem label="Kotlin">
+
+```kotlin
+class MyTeleop(robot: MyRobot) : NextOpMode(robot, BlazeBulkReadHook(Type.EXPANSION_HUB, false)) {
+    //Must be enabled for hook to work
+    override fun enableBlaze() = true
+    override fun onExpansionHubBulkData() {
+        //Run PID loops here
+    }
+}
+```
+
+</TabItem>
+<TabItem label="Java">
+
+```java
+public class MyTeleop extends NextOpMode {
+    public MyTeleop(MyRobot robot) { super(robot, new BlazeBulkReadHook(Type.EXPANSION_HUB, false)); }
+
+    //Must be enabled for hook to work
+    @Override
+    public boolean enableBlaze() {
+        return true;
+    }
+    @Override
+    public void onExpansionHubBulkData() {
+        //Run PID loops here
+    }
+}
+```
+
+</TabItem>
+</Tabs>
+
 
 ## Registering with the Driver Station
 
